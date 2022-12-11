@@ -1,0 +1,26 @@
+require,mp_checkpoint
+
+#Team Specifics!
+xmodel,viewhands_udt
+xmodel,viewhands_sniper_udt
+xmodel,mp_body_seal_udt_assault_a
+xmodel,mp_body_seal_udt_assault_b
+xmodel,mp_body_seal_udt_lmg
+xmodel,mp_body_seal_udt_smg
+xmodel,mp_body_seal_udt_sniper
+xmodel,mp_body_riot_udt
+xmodel,head_seal_udt_a
+xmodel,head_seal_udt_c
+xmodel,head_seal_udt_d
+xmodel,head_seal_udt_e
+xmodel,head_riot_udt
+xmodel,head_allies_seal_udt_sniper
+xmodel,com_plasticcase_seals
+xmodel,prop_flag_seal_carry
+xmodel,prop_flag_seal
+
+#Materials!
+material,headicon_seals
+material,faction_128_seals_fade
+material,faction_128_seals
+material,objpoint_flag_seals
