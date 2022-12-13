@@ -13,7 +13,18 @@
         public struct AdditionalFile
         {
             public string Path;
-            public string Contents;
+            public byte[] Contents;
+
+            public AdditionalFile(string path, byte[] contents)
+            {
+                Path = path;
+                Contents = contents;
+            }
+            public AdditionalFile(string path, string contents)
+            {
+                Path = path;
+                Contents = System.Text.Encoding.UTF8.GetBytes(contents);
+            }
         }
 
         public string MapName => Map.Name;
@@ -34,7 +45,7 @@ MapDataPath = IW3xportHelper.GetDumpDestinationPath(ref map, ref paths);
             additionalFiles = new List<AdditionalFile>();
         }
 
-        public void Generate()
+        public void Generate(bool includeGenericSounds)
         {
             StringBuilder sourceBuilder = new StringBuilder();
 
@@ -107,9 +118,20 @@ material,compass_map_{MapName}
             }
 
             var sounds = GetSounds();
+            var soundsInZone = new HashSet<string>();
             if (sounds != null) {
                 sourceBuilder.AppendLine("\n# Sounds");
                 foreach (var sound in sounds) {
+                    var soundAlias = Path.GetFileNameWithoutExtension(sound);
+                    sourceBuilder.AppendLine($"sound,{soundAlias}");
+                    soundsInZone.Add(soundAlias);
+                }
+            }
+
+            if (includeGenericSounds) {
+                sourceBuilder.AppendLine("\n# Generic sounds");
+                string[] genericSounds = GenerateGenericSounds(soundsInZone);
+                foreach (var sound in genericSounds) {
                     sourceBuilder.AppendLine($"sound,{Path.GetFileNameWithoutExtension(sound)}");
                 }
             }
@@ -130,14 +152,40 @@ material,compass_map_{MapName}
             Source = sourceBuilder.ToString();
         }
 
+        private string[] GenerateGenericSounds(HashSet<string> skipSounds)
+        {
+            var staticRoot = Path.Combine(Environment.CurrentDirectory, "static");
+            var genericSoundsDir = Path.Combine(staticRoot, "generic_sounds");
+
+            var files = Directory.GetFiles(genericSoundsDir, "*.*", SearchOption.AllDirectories);
+            List<string> aliases = new List<string>();
+
+            foreach(var file in files) {
+                bool isAlias = Path.GetFileName(Path.GetDirectoryName(file)) == "sounds";
+
+                if (isAlias) {
+                    if (skipSounds.Contains(Path.GetFileNameWithoutExtension(file))) {
+                        continue;
+                    }
+
+                    aliases.Add(file);
+                }
+
+                additionalFiles.Add(new AdditionalFile(Path.Combine(MapDataPath, file.Substring(genericSoundsDir.Length+1)), File.ReadAllBytes(file)));
+
+            }
+
+            return aliases.ToArray();
+        }
+
         private void GenerateLoadAssets()
         {
             string materialPath = Path.Combine(MapDataPath, "materials");
 
-            additionalFiles.Add(new AdditionalFile() {
-                Path = Path.Combine(materialPath, "$levelbriefing.iw4x.json"),
-                Contents = Resources.loadMaterialTemplate.Replace("MAPNAME", MapName)
-            });
+            additionalFiles.Add(
+                new AdditionalFile(Path.Combine(materialPath, "$levelbriefing.iw4x.json"),
+                Resources.loadMaterialTemplate.Replace("MAPNAME", MapName))
+            );
         }
 
         private void GenerateMissingGSCs()
@@ -159,17 +207,17 @@ material,compass_map_{MapName}
                     .Replace("AMBIENT", "ambient_mp_rural");
 
                 // Inject map name etc
-                additionalFiles.Add(new AdditionalFile() {
-                    Path = mainGscFile,
-                    Contents = data
-                });
+                additionalFiles.Add(new AdditionalFile(
+                    mainGscFile,
+                    data
+                ));
             }
 
             if (!File.Exists(fxGscFile)) {
-                additionalFiles.Add(new AdditionalFile() {
-                    Path = fxGscFile,
-                    Contents = @"
-//_createfx generated. Do not touch!
+                additionalFiles.Add(new AdditionalFile(
+                    fxGscFile,
+                    // NO SPACE !!
+                    @"//_createfx generated. Do not touch!
 #include common_scripts\\utility;
 #include common_scripts\\_createfx;
 
@@ -177,7 +225,7 @@ main()
 {
 
 }"
-                });
+                ));
             }
 
             var emptyGsc = @"
@@ -187,17 +235,17 @@ main()
 }";
 
             if (!File.Exists(mainFxGscFile)) {
-                additionalFiles.Add(new AdditionalFile() {
-                    Path = mainFxGscFile,
-                    Contents = emptyGsc
-                });
+                additionalFiles.Add(new AdditionalFile(
+                    mainFxGscFile,
+                    emptyGsc
+                ));
             }
 
             if (!File.Exists(artGscFile)) {
-                additionalFiles.Add(new AdditionalFile() {
-                    Path = artGscFile,
-                    Contents = emptyGsc
-                });
+                additionalFiles.Add(new AdditionalFile(
+                    artGscFile,
+                    emptyGsc
+                ));
             }
         }
 

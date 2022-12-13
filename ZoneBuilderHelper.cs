@@ -33,7 +33,7 @@
                     continue;
                 }
 
-                File.WriteAllText(file.Path, file.Contents);
+                File.WriteAllBytes(file.Path, file.Contents);
             }
         }
 
@@ -44,16 +44,16 @@
             Directory.CreateDirectory(Path.GetDirectoryName(arenaFilePath));
 
             string arena = $@"
-  map           {mapName}   
-  longname      MPUI_{mapName}
-  gametype      dm war sab sab2 dom sd sd2 hc thc ctf koth dd oneflag gtnw
-  description   MPUI_DESC_MAP_{mapName}     
-  mapimage      preview_{mapName}     
-  mapoverlay    compass_overlay_map_blank 
-  allieschar    seals_udt
-  axischar      opforce_composite
-  useteamzones  true
-  environment   forest
+  map           ""{mapName}""
+  longname      ""MPUI_{mapName}""
+  gametype      ""dm war sab sab2 dom sd sd2 hc thc ctf koth dd oneflag gtnw""
+  description   ""MPUI_DESC_MAP_{mapName}""
+  mapimage      ""preview_{mapName}""
+  mapoverlay    ""compass_overlay_map_blank ""
+  allieschar    ""seals_udt""
+  axischar      ""opforce_airborne""
+  useteamzones  ""true""
+  environment   ""forest""
 
 ";
 
@@ -181,10 +181,10 @@
                     for (int i = 0; i < arenaLines.Length; i++) {
                         string line = arenaLines[i].Trim();
                         if (line.StartsWith("allieschar")) {
-                            teams.Add(line.Substring("allieschar".Length).Trim());
+                            teams.Add(line.Substring("allieschar".Length).Trim(' ', '"'));
                         }
                         else if (line.StartsWith("axischar")) {
-                            teams.Add(line.Substring("axischar".Length).Trim());
+                            teams.Add(line.Substring("axischar".Length).Trim(' ', '"'));
                         }
                     }
 
@@ -240,12 +240,20 @@
             info.Environment.Add("PATH", $"{Environment.GetEnvironmentVariable("PATH")};{Path.GetDirectoryName(paths.AppDataIW4xLibraryPath)}");
 
             var proc = new Process { StartInfo = info };
+            pipe($"{exePath} {proc.StartInfo.Arguments}");
+
+            proc.OutputDataReceived += (sender, args) =>
+            {
+                pipe(args.Data);
+            };
+            proc.ErrorDataReceived += (sender, args) =>
+            {
+                pipe(args.Data);
+            };
 
             proc.Start();
-            while (!proc.StandardOutput.EndOfStream) {
-                pipe(proc.StandardOutput.ReadLine());
-            }
-
+            proc.BeginOutputReadLine();
+            proc.BeginErrorReadLine();
             proc.WaitForExit();
 
             if (withTeams) {
@@ -267,7 +275,33 @@
                 }
             }
 
-            return proc.ExitCode;
+            int exitCode = proc.ExitCode;
+
+            if (exitCode == 0) {
+
+                string zbOutputPath = Path.Combine(paths.IW4Path, "zone", $"{mapName}");
+                string[] filesToMove = {
+                    $"{zbOutputPath}.ff",
+                    $"{zbOutputPath}_load.ff"
+                };
+
+                foreach(var file in filesToMove) {
+                    if (File.Exists(file)) {
+                        string destination = Path.Combine(GetZoneDestinationPath(mapName, ref paths), Path.GetFileName(file));
+                        if (File.Exists(destination)) {
+                            File.Delete(destination);
+                        }
+
+                        File.Move(file, destination);
+                    }
+                    else {
+                        pipe.Invoke($"Could not find {file} after building!");
+                        return -1;
+                    }
+                }
+            }
+
+            return exitCode;
         }
 
         public static string GetZoneSourcePath(string mapName, ref Paths paths)

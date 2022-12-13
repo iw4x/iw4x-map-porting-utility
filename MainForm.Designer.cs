@@ -55,6 +55,7 @@
             this.getHelpOnlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editArenaFileButton = new System.Windows.Forms.Button();
+            this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
             iw3GroupBox = new System.Windows.Forms.GroupBox();
             zonebuilderGroupBox = new System.Windows.Forms.GroupBox();
             outputBoxGroup = new System.Windows.Forms.GroupBox();
@@ -69,6 +70,7 @@
             iw3GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             iw3GroupBox.BackColor = System.Drawing.SystemColors.Menu;
+            iw3GroupBox.Controls.Add(this.includeGenericSoundsCheckbox);
             iw3GroupBox.Controls.Add(this.replaceExistingFilesCheckbox);
             iw3GroupBox.Controls.Add(this.correctSpecularsCheckbox);
             iw3GroupBox.Controls.Add(this.convertGscCheckbox);
@@ -383,6 +385,18 @@
             this.editArenaFileButton.UseVisualStyleBackColor = true;
             this.editArenaFileButton.Click += new System.EventHandler(this.editArenaFileButton_Click);
             // 
+            // includeGenericSoundsCheckbox
+            // 
+            this.includeGenericSoundsCheckbox.AutoSize = true;
+            this.includeGenericSoundsCheckbox.Checked = true;
+            this.includeGenericSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(206, 191);
+            this.includeGenericSoundsCheckbox.Name = "includeGenericSoundsCheckbox";
+            this.includeGenericSoundsCheckbox.Size = new System.Drawing.Size(136, 17);
+            this.includeGenericSoundsCheckbox.TabIndex = 13;
+            this.includeGenericSoundsCheckbox.Text = "Include generic sounds";
+            this.includeGenericSoundsCheckbox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,6 +451,7 @@
         private System.Windows.Forms.CheckBox buildTeamsCheckbox;
         private System.Windows.Forms.CheckBox replaceExistingFilesCheckbox;
         private System.Windows.Forms.Button editArenaFileButton;
+        private System.Windows.Forms.CheckBox includeGenericSoundsCheckbox;
     }
 }
 

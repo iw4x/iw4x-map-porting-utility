@@ -133,6 +133,7 @@
             bool shouldConvertGSC = convertGscCheckbox.Checked;
             bool shouldCorrectSpeculars = correctSpecularsCheckbox.Checked;
             bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
+            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
 
             List<IW3xportHelper.Map> mapsToDump = new List<IW3xportHelper.Map>();
             Dictionary<IW3xportHelper.Map, int> indices = new Dictionary<IW3xportHelper.Map, int>();
@@ -154,6 +155,7 @@
                     Action untick = () =>
                     {
                         iw3MapListBox.SetItemChecked(indices[map], false);
+                        RefreshZoneSourcesList();
                     };
 
                     try {
@@ -172,7 +174,7 @@
 
                             IW3xportHelper.Map mapCpy = map;
                             var project = new ZoneProject(ref mapCpy, ref paths);
-                            project.Generate();
+                            project.Generate(includeGenericSounds);
 
                             if (shouldWriteSource) {
 
@@ -211,6 +213,7 @@
                     }
 
                     RefreshZoneSourcesList();
+                    RefreshIW3Buttons();
 
                     if (!hadError) {
                         // Check maps we ported successfully
@@ -398,6 +401,8 @@
             Enabled = false;
             outputTextBox.Clear();
 
+            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
+
             Task.Run(() =>
             {
                 foreach (var item in iw4ZoneListBox.CheckedItems) {
@@ -408,8 +413,9 @@
                     outputTextBox.Invoke(updateTextBox, this, $"Generating source for {item}...");
 
                     ZoneProject proj = new ZoneProject(ref map, ref paths);
-                    proj.Generate();
+                    proj.Generate(includeGenericSounds);
                     ZoneBuilderHelper.WriteSourceForProject(ref proj, ref paths);
+                    ZoneBuilderHelper.WriteAdditionalFilesForProject(ref proj, false);
                 }
 
                 Action postExport = () =>

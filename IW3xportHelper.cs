@@ -102,12 +102,21 @@
                 }
             };
 
-            proc.Start();
-            while (!proc.StandardOutput.EndOfStream) {
-                pipe(proc.StandardOutput.ReadLine());
-            }
+            pipe($"{exePath} {proc.StartInfo.Arguments}");
+            proc.OutputDataReceived += (sender, args) =>
+            {
+                pipe(args.Data);
+            };
+            proc.ErrorDataReceived += (sender, args) =>
+            {
+                pipe(args.Data);
+            };
 
+            proc.Start();
+            proc.BeginOutputReadLine();
+            proc.BeginErrorReadLine();
             proc.WaitForExit();
+
             return proc.ExitCode;
         }
 
