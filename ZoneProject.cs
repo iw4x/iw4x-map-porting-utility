@@ -36,11 +36,11 @@
         public readonly string MapDataPath;
 
         private readonly List<AdditionalFile> additionalFiles;
-        
+
         public ZoneProject(ref IW3xportHelper.Map map, ref Paths paths)
         {
             Map = map;
-MapDataPath = IW3xportHelper.GetDumpDestinationPath(ref map, ref paths);
+            MapDataPath = IW3xportHelper.GetDumpDestinationPath(ref map, ref paths);
             Source = string.Empty;
             additionalFiles = new List<AdditionalFile>();
         }
@@ -50,7 +50,7 @@ MapDataPath = IW3xportHelper.GetDumpDestinationPath(ref map, ref paths);
             StringBuilder sourceBuilder = new StringBuilder();
 
             if (HasMinigun) {
-                sourceBuilder.AppendLine("require,minigun");
+                sourceBuilder.AppendLine("require,zonebuilder_minigun");
             }
 
             string baseGSCBlock = $@"
@@ -83,7 +83,7 @@ material,compass_map_{MapName}
 ");
 
             var gscs = GetGSCs();
-            if(gscs != null) {
+            if (gscs != null) {
                 foreach (var gsc in gscs) {
                     string localPath = gsc.Substring(MapDataPath.Length + 1)
                         .Replace(Path.DirectorySeparatorChar, '/');
@@ -145,6 +145,26 @@ material,compass_map_{MapName}
                 }
             }
 
+            if (HasMinigun) {
+                sourceBuilder.AppendLine(@"
+# Minigun
+sound,minigun_gatling_cooldown
+sound,minigun_gatling_fire
+sound,minigun_gatling_spin
+sound,minigun_gatling_spindown1
+sound,minigun_gatling_spindown2
+sound,minigun_gatling_spindown3
+sound,minigun_gatling_spindown4
+sound,minigun_gatling_spinloop
+sound,minigun_gatling_spinup1
+sound,minigun_gatling_spinup2
+sound,minigun_gatling_spinup3
+sound,minigun_gatling_spinup4
+material,hud_icon_minigun
+weapon,turret_minigun_mp
+");
+            }
+
             GenerateLoadAssets();
             GenerateMissingGSCs();
 
@@ -160,7 +180,7 @@ material,compass_map_{MapName}
             var files = Directory.GetFiles(genericSoundsDir, "*.*", SearchOption.AllDirectories);
             List<string> aliases = new List<string>();
 
-            foreach(var file in files) {
+            foreach (var file in files) {
                 bool isAlias = Path.GetFileName(Path.GetDirectoryName(file)) == "sounds";
 
                 if (isAlias) {
@@ -171,7 +191,7 @@ material,compass_map_{MapName}
                     aliases.Add(file);
                 }
 
-                additionalFiles.Add(new AdditionalFile(Path.Combine(MapDataPath, file.Substring(genericSoundsDir.Length+1)), File.ReadAllBytes(file)));
+                additionalFiles.Add(new AdditionalFile(Path.Combine(MapDataPath, file.Substring(genericSoundsDir.Length + 1)), File.ReadAllBytes(file)));
 
             }
 

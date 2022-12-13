@@ -44,6 +44,7 @@
             Directory.CreateDirectory(Path.GetDirectoryName(arenaFilePath));
 
             string arena = $@"
+{{
   map           ""{mapName}""
   longname      ""MPUI_{mapName}""
   gametype      ""dm war sab sab2 dom sd sd2 hc thc ctf koth dd oneflag gtnw""
@@ -54,7 +55,7 @@
   axischar      ""opforce_airborne""
   useteamzones  ""true""
   environment   ""forest""
-
+}}
 ";
 
             File.WriteAllText(arenaFilePath, arena);
