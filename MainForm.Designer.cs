@@ -30,7 +30,9 @@
             System.Windows.Forms.GroupBox iw3GroupBox;
             System.Windows.Forms.GroupBox zonebuilderGroupBox;
             System.Windows.Forms.GroupBox outputBoxGroup;
+            System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
             this.replaceExistingFilesCheckbox = new System.Windows.Forms.CheckBox();
             this.correctSpecularsCheckbox = new System.Windows.Forms.CheckBox();
             this.convertGscCheckbox = new System.Windows.Forms.CheckBox();
@@ -44,6 +46,7 @@
             this.zbRefreshButton = new System.Windows.Forms.Button();
             this.openMapFolderButton = new System.Windows.Forms.Button();
             this.editCSVButton = new System.Windows.Forms.Button();
+            this.editArenaFileButton = new System.Windows.Forms.Button();
             this.runMapButton = new System.Windows.Forms.Button();
             this.generateIWDButton = new System.Windows.Forms.Button();
             this.buildZoneButton = new System.Windows.Forms.Button();
@@ -54,11 +57,11 @@
             this.toolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.getHelpOnlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editArenaFileButton = new System.Windows.Forms.Button();
-            this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
+            this.smodelsFixComboBox = new System.Windows.Forms.ComboBox();
             iw3GroupBox = new System.Windows.Forms.GroupBox();
             zonebuilderGroupBox = new System.Windows.Forms.GroupBox();
             outputBoxGroup = new System.Windows.Forms.GroupBox();
+            label1 = new System.Windows.Forms.Label();
             iw3GroupBox.SuspendLayout();
             zonebuilderGroupBox.SuspendLayout();
             outputBoxGroup.SuspendLayout();
@@ -70,6 +73,8 @@
             iw3GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             iw3GroupBox.BackColor = System.Drawing.SystemColors.Menu;
+            iw3GroupBox.Controls.Add(label1);
+            iw3GroupBox.Controls.Add(this.smodelsFixComboBox);
             iw3GroupBox.Controls.Add(this.includeGenericSoundsCheckbox);
             iw3GroupBox.Controls.Add(this.replaceExistingFilesCheckbox);
             iw3GroupBox.Controls.Add(this.correctSpecularsCheckbox);
@@ -85,6 +90,18 @@
             iw3GroupBox.TabIndex = 2;
             iw3GroupBox.TabStop = false;
             iw3GroupBox.Text = "Call Of Duty 4 maps";
+            // 
+            // includeGenericSoundsCheckbox
+            // 
+            this.includeGenericSoundsCheckbox.AutoSize = true;
+            this.includeGenericSoundsCheckbox.Checked = true;
+            this.includeGenericSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(206, 191);
+            this.includeGenericSoundsCheckbox.Name = "includeGenericSoundsCheckbox";
+            this.includeGenericSoundsCheckbox.Size = new System.Drawing.Size(136, 17);
+            this.includeGenericSoundsCheckbox.TabIndex = 13;
+            this.includeGenericSoundsCheckbox.Text = "Include generic sounds";
+            this.includeGenericSoundsCheckbox.UseVisualStyleBackColor = true;
             // 
             // replaceExistingFilesCheckbox
             // 
@@ -244,7 +261,7 @@
             this.openMapFolderButton.Name = "openMapFolderButton";
             this.openMapFolderButton.Size = new System.Drawing.Size(151, 23);
             this.openMapFolderButton.TabIndex = 6;
-            this.openMapFolderButton.Text = "Open map folder";
+            this.openMapFolderButton.Text = "📁 Open map folders";
             this.openMapFolderButton.UseVisualStyleBackColor = true;
             this.openMapFolderButton.Click += new System.EventHandler(this.openMapFolderButton_Click);
             // 
@@ -255,9 +272,20 @@
             this.editCSVButton.Name = "editCSVButton";
             this.editCSVButton.Size = new System.Drawing.Size(151, 23);
             this.editCSVButton.TabIndex = 5;
-            this.editCSVButton.Text = "Edit zone source";
+            this.editCSVButton.Text = "📝 Edit zone source";
             this.editCSVButton.UseVisualStyleBackColor = true;
             this.editCSVButton.Click += new System.EventHandler(this.editCSVButton_Click);
+            // 
+            // editArenaFileButton
+            // 
+            this.editArenaFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editArenaFileButton.Location = new System.Drawing.Point(203, 238);
+            this.editArenaFileButton.Name = "editArenaFileButton";
+            this.editArenaFileButton.Size = new System.Drawing.Size(151, 23);
+            this.editArenaFileButton.TabIndex = 4;
+            this.editArenaFileButton.Text = "📝 Edit arena file";
+            this.editArenaFileButton.UseVisualStyleBackColor = true;
+            this.editArenaFileButton.Click += new System.EventHandler(this.editArenaFileButton_Click);
             // 
             // runMapButton
             // 
@@ -267,7 +295,7 @@
             this.runMapButton.Name = "runMapButton";
             this.runMapButton.Size = new System.Drawing.Size(151, 23);
             this.runMapButton.TabIndex = 3;
-            this.runMapButton.Text = "Run map";
+            this.runMapButton.Text = "▶ Run map";
             this.runMapButton.UseVisualStyleBackColor = true;
             this.runMapButton.Click += new System.EventHandler(this.runMapButton_Click);
             // 
@@ -290,7 +318,7 @@
             this.buildZoneButton.Name = "buildZoneButton";
             this.buildZoneButton.Size = new System.Drawing.Size(151, 53);
             this.buildZoneButton.TabIndex = 1;
-            this.buildZoneButton.Text = "Build zone";
+            this.buildZoneButton.Text = "🧱 Build zone";
             this.buildZoneButton.UseVisualStyleBackColor = true;
             this.buildZoneButton.Click += new System.EventHandler(this.buildZoneButton_Click);
             // 
@@ -363,39 +391,38 @@
             // getHelpOnlineToolStripMenuItem
             // 
             this.getHelpOnlineToolStripMenuItem.Name = "getHelpOnlineToolStripMenuItem";
-            this.getHelpOnlineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.getHelpOnlineToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.getHelpOnlineToolStripMenuItem.Text = "Get help online...";
             this.getHelpOnlineToolStripMenuItem.Click += new System.EventHandler(this.getHelpOnlineToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // editArenaFileButton
+            // smodelsFixComboBox
             // 
-            this.editArenaFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editArenaFileButton.Location = new System.Drawing.Point(203, 238);
-            this.editArenaFileButton.Name = "editArenaFileButton";
-            this.editArenaFileButton.Size = new System.Drawing.Size(151, 23);
-            this.editArenaFileButton.TabIndex = 4;
-            this.editArenaFileButton.Text = "Edit arena file";
-            this.editArenaFileButton.UseVisualStyleBackColor = true;
-            this.editArenaFileButton.Click += new System.EventHandler(this.editArenaFileButton_Click);
+            this.smodelsFixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.smodelsFixComboBox.FormattingEnabled = true;
+            this.smodelsFixComboBox.Items.AddRange(new object[] {
+            "Leave as-is",
+            "Delete + move to entities",
+            "Swap + move to entities"});
+            this.smodelsFixComboBox.Location = new System.Drawing.Point(206, 238);
+            this.smodelsFixComboBox.Name = "smodelsFixComboBox";
+            this.smodelsFixComboBox.Size = new System.Drawing.Size(148, 21);
+            this.smodelsFixComboBox.TabIndex = 14;
             // 
-            // includeGenericSoundsCheckbox
+            // label1
             // 
-            this.includeGenericSoundsCheckbox.AutoSize = true;
-            this.includeGenericSoundsCheckbox.Checked = true;
-            this.includeGenericSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(206, 191);
-            this.includeGenericSoundsCheckbox.Name = "includeGenericSoundsCheckbox";
-            this.includeGenericSoundsCheckbox.Size = new System.Drawing.Size(136, 17);
-            this.includeGenericSoundsCheckbox.TabIndex = 13;
-            this.includeGenericSoundsCheckbox.Text = "Include generic sounds";
-            this.includeGenericSoundsCheckbox.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(206, 222);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(134, 13);
+            label1.TabIndex = 15;
+            label1.Text = "Incompatible static models:";
             // 
             // MainForm
             // 
@@ -452,6 +479,7 @@
         private System.Windows.Forms.CheckBox replaceExistingFilesCheckbox;
         private System.Windows.Forms.Button editArenaFileButton;
         private System.Windows.Forms.CheckBox includeGenericSoundsCheckbox;
+        private System.Windows.Forms.ComboBox smodelsFixComboBox;
     }
 }
 

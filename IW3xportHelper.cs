@@ -81,7 +81,7 @@
             return maps.ToArray();
         }
 
-        public static int DumpMap(Map map, ref Paths paths, bool correctSpeculars, bool convertGSCs, Action<string> pipe)
+        public static int DumpMap(Map map, ref Paths paths, bool correctSpeculars, bool convertGSCs, uint correctSmodelsMethod, Action<string> pipe)
         {
             string exePath = Path.Combine(paths.IW3Path, EXECUTABLE_NAME);
 
@@ -94,7 +94,7 @@
                 StartInfo = new ProcessStartInfo {
                     FileName = exePath,
                     WorkingDirectory = paths.IW3Path,
-                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(correctSpeculars ? 1 : 0)} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
+                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(correctSpeculars ? 1 : 0)} +set iw3x_smodels_fix_method {correctSmodelsMethod} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,

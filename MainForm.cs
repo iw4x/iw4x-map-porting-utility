@@ -26,6 +26,9 @@
             iw3MapListBox.ItemCheck += Iw3MapListBox_ItemCheck;
             iw4ZoneListBox.ItemCheck += Iw4ZoneListBox_ItemCheck;
             outputTextBox.Text = string.Empty;
+            smodelsFixComboBox.SelectedIndex = 1;
+
+            SetupTooltips();
 
             RefreshIW4Buttons(); 
             RefreshIW3Buttons();
@@ -134,6 +137,7 @@
             bool shouldCorrectSpeculars = correctSpecularsCheckbox.Checked;
             bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
             bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
+            uint correctSModelsMethod = (uint)smodelsFixComboBox.SelectedIndex;
 
             List<IW3xportHelper.Map> mapsToDump = new List<IW3xportHelper.Map>();
             Dictionary<IW3xportHelper.Map, int> indices = new Dictionary<IW3xportHelper.Map, int>();
@@ -164,7 +168,8 @@
                             ref paths,
                             shouldCorrectSpeculars,
                             shouldConvertGSC,
-                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt));
+                            correctSModelsMethod,
+                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt));;
 
                         outputTextBox.Invoke(updateTextBox, this, $"IW3xport program terminated with output {exitCode}");
 
@@ -459,6 +464,28 @@
                     System.Diagnostics.Process.Start($"{ZoneBuilderHelper.GetZoneSourcePath(mapName, ref paths)}");
                 }
             }
+        }
+
+        private void SetupTooltips()
+        {
+            new ToolTip().SetToolTip(exportButton, "Dump selected map(s) with the specified settings and put it in <iw4x game folder>/mods/<name of the map>");
+            new ToolTip().SetToolTip(generateSourceCheckbox, "Generate a CSV to build this map again later and place it in <iw4x game folder>/zone_source");
+            new ToolTip().SetToolTip(generateArenaCheckbox, "Generate an arena file with teams and gamemode information and place it in <iw4x game folder>/usermaps/<name of the map>");
+            new ToolTip().SetToolTip(convertGscCheckbox, "Attempt to automatically upgrade GSC from iw3 functions to iw4 equivalents and fix fog/specular calls");
+            new ToolTip().SetToolTip(correctSpecularsCheckbox, "Aggressively tone down the specular images to correspond to iw4's grading");
+            new ToolTip().SetToolTip(replaceExistingFilesCheckbox, "Replace existing GSC files that might already be in <iw4x game folder>/mods/<name of the map>");
+            new ToolTip().SetToolTip(includeGenericSoundsCheckbox, "Add a bunch of generic sounds to the zone - this increases the size of the map but ensures most sounds will be present");
+            new ToolTip().SetToolTip(smodelsFixComboBox, "Some iw3 models cannot be used as static models on iw4. IW3xport will attempt to move them to entities instead, unless you pick \"Leave as is\". Models can be either removed from GfxWorld (best, but can sometimes cause visibility issues) or swapped around GfxWorld (worse, but safer)");
+
+            new ToolTip().SetToolTip(buildTeamsCheckbox, "Include the teams mentioned in the arenafile directly in the zone instead of loading them externally (better)");
+            new ToolTip().SetToolTip(buildZoneButton, "Build selected map(s) from the zone source and copy them to <iw4x game folder>/usermaps/<name of the map> once built");
+            new ToolTip().SetToolTip(runMapButton, "Run selected map in dev mode for testing");
+            new ToolTip().SetToolTip(generateIWDButton, "Pack up images and sounds used by the map in a single IWD for easier sharing");
+            new ToolTip().SetToolTip(generateSourceCheckbox, "Regenerate the zone source without re-exporting the map, if you broke it by accident");
+            new ToolTip().SetToolTip(openMapFolderButton, "Open the locations of the map's dump & map's destination folder");
+            new ToolTip().SetToolTip(editArenaFileButton, "Edit the arena file (teams, gamemodes, environment, ...)");
+            new ToolTip().SetToolTip(editCSVButton, "Edit the source file manually");
+
         }
     }
 }

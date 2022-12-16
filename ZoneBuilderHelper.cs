@@ -43,12 +43,14 @@
             var arenaFilePath = GetArenaFilePath(mapName, ref paths);
             Directory.CreateDirectory(Path.GetDirectoryName(arenaFilePath));
 
+            string mapNameShort = mapName.Substring(3).ToUpper();
+
             string arena = $@"
 {{
   map           ""{mapName}""
-  longname      ""MPUI_{mapName}""
+  longname      ""MPUI_{mapNameShort}""
   gametype      ""dm war sab sab2 dom sd sd2 hc thc ctf koth dd oneflag gtnw""
-  description   ""MPUI_DESC_MAP_{mapName}""
+  description   ""MPUI_DESC_MAP_{mapNameShort}""
   mapimage      ""preview_{mapName}""
   mapoverlay    ""compass_overlay_map_blank ""
   allieschar    ""seals_udt""
