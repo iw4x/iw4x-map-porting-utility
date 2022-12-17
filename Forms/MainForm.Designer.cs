@@ -28,10 +28,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.GroupBox iw3GroupBox;
+            System.Windows.Forms.Label label1;
             System.Windows.Forms.GroupBox zonebuilderGroupBox;
             System.Windows.Forms.GroupBox outputBoxGroup;
-            System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.smodelsFixComboBox = new System.Windows.Forms.ComboBox();
             this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
             this.replaceExistingFilesCheckbox = new System.Windows.Forms.CheckBox();
             this.correctSpecularsCheckbox = new System.Windows.Forms.CheckBox();
@@ -57,11 +58,10 @@
             this.toolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.getHelpOnlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smodelsFixComboBox = new System.Windows.Forms.ComboBox();
             iw3GroupBox = new System.Windows.Forms.GroupBox();
+            label1 = new System.Windows.Forms.Label();
             zonebuilderGroupBox = new System.Windows.Forms.GroupBox();
             outputBoxGroup = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
             iw3GroupBox.SuspendLayout();
             zonebuilderGroupBox.SuspendLayout();
             outputBoxGroup.SuspendLayout();
@@ -72,7 +72,6 @@
             // 
             iw3GroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            iw3GroupBox.BackColor = System.Drawing.SystemColors.Menu;
             iw3GroupBox.Controls.Add(label1);
             iw3GroupBox.Controls.Add(this.smodelsFixComboBox);
             iw3GroupBox.Controls.Add(this.includeGenericSoundsCheckbox);
@@ -84,12 +83,35 @@
             iw3GroupBox.Controls.Add(this.iw3RefreshButton);
             iw3GroupBox.Controls.Add(this.exportButton);
             iw3GroupBox.Controls.Add(this.iw3MapListBox);
+            iw3GroupBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             iw3GroupBox.Location = new System.Drawing.Point(12, 27);
             iw3GroupBox.Name = "iw3GroupBox";
             iw3GroupBox.Size = new System.Drawing.Size(360, 305);
             iw3GroupBox.TabIndex = 2;
             iw3GroupBox.TabStop = false;
             iw3GroupBox.Text = "Call Of Duty 4 maps";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(206, 222);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(134, 13);
+            label1.TabIndex = 15;
+            label1.Text = "Incompatible static models:";
+            // 
+            // smodelsFixComboBox
+            // 
+            this.smodelsFixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.smodelsFixComboBox.FormattingEnabled = true;
+            this.smodelsFixComboBox.Items.AddRange(new object[] {
+            "Leave as-is",
+            "Delete + move to entities",
+            "Swap + move to entities"});
+            this.smodelsFixComboBox.Location = new System.Drawing.Point(206, 238);
+            this.smodelsFixComboBox.Name = "smodelsFixComboBox";
+            this.smodelsFixComboBox.Size = new System.Drawing.Size(148, 21);
+            this.smodelsFixComboBox.TabIndex = 14;
             // 
             // includeGenericSoundsCheckbox
             // 
@@ -203,7 +225,6 @@
             zonebuilderGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            zonebuilderGroupBox.BackColor = System.Drawing.SystemColors.Menu;
             zonebuilderGroupBox.Controls.Add(this.buildTeamsCheckbox);
             zonebuilderGroupBox.Controls.Add(this.regenerateZoneSourceButton);
             zonebuilderGroupBox.Controls.Add(this.zbRefreshButton);
@@ -401,28 +422,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // smodelsFixComboBox
-            // 
-            this.smodelsFixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.smodelsFixComboBox.FormattingEnabled = true;
-            this.smodelsFixComboBox.Items.AddRange(new object[] {
-            "Leave as-is",
-            "Delete + move to entities",
-            "Swap + move to entities"});
-            this.smodelsFixComboBox.Location = new System.Drawing.Point(206, 238);
-            this.smodelsFixComboBox.Name = "smodelsFixComboBox";
-            this.smodelsFixComboBox.Size = new System.Drawing.Size(148, 21);
-            this.smodelsFixComboBox.TabIndex = 14;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(206, 222);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(134, 13);
-            label1.TabIndex = 15;
-            label1.Text = "Incompatible static models:";
             // 
             // MainForm
             // 

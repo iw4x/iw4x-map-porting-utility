@@ -191,7 +191,7 @@
                         }
                     }
 
-                    if (teams.Count != 2) {
+                    if (teams.Count > 2) {
                         pipe.Invoke($"Wrong number of teams in arena file: expected 2 teams, got {string.Join(", ", teams)}");
                         return -1;
                     }

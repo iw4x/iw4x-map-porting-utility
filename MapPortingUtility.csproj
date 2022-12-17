@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>cardicon_porterjustice2.ico</ApplicationIcon>
+    <ApplicationIcon>cardicon_porterjustice.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,20 +58,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Include="Forms\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
+    <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="IW3xportHelper.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\IW3xportHelper.cs" />
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Paths.cs" />
+    <Compile Include="Model\Paths.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -79,18 +82,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SetPathsControl.cs">
+    <Compile Include="Forms\SetPathsControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetPathsControl.Designer.cs">
+    <Compile Include="Forms\SetPathsControl.Designer.cs">
       <DependentUpon>SetPathsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZoneBuilderHelper.cs" />
-    <Compile Include="ZoneProject.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
+    <Compile Include="Helpers\ZoneBuilderHelper.cs" />
+    <Compile Include="Model\ZoneProject.cs" />
+    <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -107,7 +110,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetPathsControl.resx">
+    <EmbeddedResource Include="Forms\SetPathsControl.resx">
       <DependentUpon>SetPathsControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -120,7 +123,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="cardicon_porterjustice2.ico" />
+    <Content Include="cardicon_porterjustice.ico" />
     <Content Include="static\generic_sounds\loaded_sound\amb_emitters\amb_rain_car.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
