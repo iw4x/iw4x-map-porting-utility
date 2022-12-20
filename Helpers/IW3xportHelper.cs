@@ -57,25 +57,27 @@
                 MessageBox.Show($"Could not list canonical maps for iw3!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            try {
-                var directories = Directory.GetDirectories(Path.Combine(basePath, USERMAPS_MAP_DIRECTORY));
+            if (Directory.Exists(Path.Combine(basePath, USERMAPS_MAP_DIRECTORY))) {
+                try {
+                    var directories = Directory.GetDirectories(Path.Combine(basePath, USERMAPS_MAP_DIRECTORY));
 
-                foreach (var directory in directories) {
-                    var files = Directory.GetFiles(directory);
-                    foreach (var file in files) {
-                        if (!file.EndsWith(MAP_EXT_FILTER)) continue;
-                        if (!Path.GetFileName(file).StartsWith(MAP_PREFIX_FILTER)) continue;
-                        if (file.EndsWith(MAP_SUFFIX_FILTER + MAP_EXT_FILTER)) continue;
+                    foreach (var directory in directories) {
+                        var files = Directory.GetFiles(directory);
+                        foreach (var file in files) {
+                            if (!file.EndsWith(MAP_EXT_FILTER)) continue;
+                            if (!Path.GetFileName(file).StartsWith(MAP_PREFIX_FILTER)) continue;
+                            if (file.EndsWith(MAP_SUFFIX_FILTER + MAP_EXT_FILTER)) continue;
 
-                        maps.Add(new Map() {
-                            Path = Path.Combine(file),
-                            Category = Map.ECategory.USERMAPS
-                        });
+                            maps.Add(new Map() {
+                                Path = Path.Combine(file),
+                                Category = Map.ECategory.USERMAPS
+                            });
+                        }
                     }
                 }
-            }
-            catch (Exception ex) {
-                MessageBox.Show($"Could not list user maps for iw3!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                catch (Exception ex) {
+                    MessageBox.Show($"Could not list user maps for iw3!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
             return maps.ToArray();

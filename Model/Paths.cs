@@ -51,10 +51,12 @@
                 }
             }
 
+#if !DEBUG
             if (!HasXLabsInstalled()) {
                 error = "XLabs has never been launched on this computer! Please launch the game at least once through the XLabs Launcher before using this tool to create the necessary files.";
                 return false;
             }
+#endif
 
             return true;
         }
