@@ -67,6 +67,8 @@
     <Compile Include="Forms\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Helpers\ExportHelper.cs" />
+    <Compile Include="Helpers\IW5xportHelper.cs" />
     <Compile Include="Helpers\IW3xportHelper.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>

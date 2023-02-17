@@ -17,11 +17,14 @@
 
         static readonly string teamSourceFolder = Path.Combine("static", "team_source");
 
+        public static string GetSourceFolderPath(ref Paths paths) => Path.Combine(paths.IW4Path, ZONE_SOURCE_FOLDER);
+
         public static void WriteSourceForProject(ref ZoneProject project, ref Paths paths)
         {
-            Directory.CreateDirectory(Path.Combine(paths.IW4Path, ZONE_SOURCE_FOLDER));
-            File.WriteAllText(Path.Combine(paths.IW4Path, ZONE_SOURCE_FOLDER, $"{project.Map.Name}.CSV"), project.Source);
-            File.WriteAllText(Path.Combine(paths.IW4Path, ZONE_SOURCE_FOLDER, $"{project.Map.Name}_load.CSV"), "material,$levelbriefing\n");
+            var sourcePath = GetSourceFolderPath(ref paths);
+            Directory.CreateDirectory(sourcePath);
+            File.WriteAllText(Path.Combine(sourcePath, $"{project.Map.Name}.CSV"), project.Source);
+            File.WriteAllText(Path.Combine(sourcePath, $"{project.Map.Name}_load.CSV"), "material,$levelbriefing\n");
         }
 
         public static void WriteAdditionalFilesForProject(ref ZoneProject project, bool replaceExistingGSC)

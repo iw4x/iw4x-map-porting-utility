@@ -14,6 +14,8 @@
 
         public string IW3Path { get; set; }
 
+        public string IW5Path { get; set; }
+
         public string AppDataIW4xLibraryPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "xlabs", "data", "iw4x", "iw4x.dll"
@@ -27,7 +29,11 @@
             "main", "zone", "iw3xport.exe", "iw3mp.exe", "iw3x.dll"
         };
 
-        public bool IsValid => IsIW4PathGood(out _) && IsIW3PathGood(out _);
+        private static readonly string[] mandatoryIW5Files = new string[] {
+            "main", "zone", "open-iw5.exe", "mss32.dll", "binkw32.dll"
+        };
+
+        public bool IsValid => IsIW4PathGood(out _) && (IsIW3PathGood(out _) || IsIW5PathGood(out _));
 
         public bool HasXLabsInstalled()
         {
@@ -81,6 +87,50 @@
 
             return true;
         }
+        public bool IsIW5PathGood(out string error)
+        {
+            error = string.Empty;
+
+            if (!Directory.Exists(IW5Path))
+            {
+                error = "No such file or directory!";
+                return false;
+            }
+
+            for (int i = 0; i < mandatoryIW5Files.Length; i++)
+            {
+                string path = Path.Combine(IW5Path, mandatoryIW5Files[i]);
+                if (!File.Exists(path) && !Directory.Exists(path))
+                {
+                    error = $"Missing critical file/directory {path}";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool TryDetectIW5Path()
+        {
+            string[] candidates = {
+                @"C:\Program Files\Steam\steamapps\common\Call of Duty Modern Warfare 3",
+                @"C:\Program Files (x86)\Activision\Call of Duty Modern Warfare 3",
+                @"D:\Games\Call of Duty Modern Warfare 3",
+            };
+
+            for (int i = 0; i < candidates.Length; i++)
+            {
+                IW5Path = candidates[i];
+                if (IsIW5PathGood(out _))
+                {
+                    return true;
+                }
+            }
+
+            IW5Path = string.Empty;
+            return false;
+        }
+
 
         public bool TryDetectIW3Path()
         {

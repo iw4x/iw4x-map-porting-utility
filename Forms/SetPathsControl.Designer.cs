@@ -38,10 +38,14 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.browseIW5Button = new System.Windows.Forms.Button();
+            this.iw5PathTextBox = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +60,7 @@
             // 
             this.groupBox1.Controls.Add(this.browseIW3Button);
             this.groupBox1.Controls.Add(this.iw3PathTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 79);
+            this.groupBox1.Location = new System.Drawing.Point(3, 134);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(469, 49);
             this.groupBox1.TabIndex = 0;
@@ -84,7 +88,8 @@
             // 
             this.groupBox2.Controls.Add(this.browseIW4Button);
             this.groupBox2.Controls.Add(this.iw4PathTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(3, 134);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(3, 79);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(469, 49);
             this.groupBox2.TabIndex = 2;
@@ -110,7 +115,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(86, 189);
+            this.okButton.Location = new System.Drawing.Point(86, 244);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(386, 23);
             this.okButton.TabIndex = 3;
@@ -120,7 +125,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(9, 189);
+            this.cancelButton.Location = new System.Drawing.Point(9, 244);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(71, 23);
             this.cancelButton.TabIndex = 4;
@@ -137,12 +142,41 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.browseIW5Button);
+            this.groupBox3.Controls.Add(this.iw5PathTextBox);
+            this.groupBox3.Location = new System.Drawing.Point(3, 189);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(469, 49);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Modern Warfare 3 installation folder";
+            // 
+            // browseIW5Button
+            // 
+            this.browseIW5Button.Location = new System.Drawing.Point(388, 19);
+            this.browseIW5Button.Name = "browseIW5Button";
+            this.browseIW5Button.Size = new System.Drawing.Size(75, 23);
+            this.browseIW5Button.TabIndex = 1;
+            this.browseIW5Button.Text = "Browse...";
+            this.browseIW5Button.UseVisualStyleBackColor = true;
+            this.browseIW5Button.Click += new System.EventHandler(this.browseIW5Button_Click);
+            // 
+            // iw5PathTextBox
+            // 
+            this.iw5PathTextBox.Location = new System.Drawing.Point(6, 19);
+            this.iw5PathTextBox.Name = "iw5PathTextBox";
+            this.iw5PathTextBox.Size = new System.Drawing.Size(376, 20);
+            this.iw5PathTextBox.TabIndex = 0;
+            // 
             // SetPathsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 220);
+            this.ClientSize = new System.Drawing.Size(479, 273);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cancelButton);
@@ -156,6 +190,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -171,5 +207,8 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button browseIW5Button;
+        private System.Windows.Forms.TextBox iw5PathTextBox;
     }
 }

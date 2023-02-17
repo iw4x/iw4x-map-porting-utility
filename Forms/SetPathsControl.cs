@@ -32,14 +32,34 @@
                 computedPath.TryDetectIW4Path();
             }
 
+            if (!computedPath.IsIW5PathGood(out _))
+            {
+                computedPath.TryDetectIW5Path();
+            }
+
             iw3PathTextBox.Text = computedPath.IW3Path;
             iw4PathTextBox.Text = computedPath.IW4Path;
+            iw5PathTextBox.Text = computedPath.IW5Path;
 
             iw3PathTextBox.TextChanged += Iw3PathTextBox_TextChanged;
             iw4PathTextBox.TextChanged += Iw4PathTextBox_TextChanged;
+            iw5PathTextBox.TextChanged += Iw5PathTextBox_TextChanged;
 
         }
 
+        private void Iw5PathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            computedPath.IW5Path = iw5PathTextBox.Text.Trim();
+
+            if (computedPath.IsIW5PathGood(out string error))
+            {
+                okButton.Enabled = computedPath.IsValid;
+            }
+            else
+            {
+                MessageBox.Show(error, "Invalid path", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void Iw4PathTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -89,6 +109,15 @@
             var openDialog = new FolderBrowserDialog();
             if (openDialog.ShowDialog() == DialogResult.OK) {
                 iw4PathTextBox.Text = openDialog.SelectedPath;
+            }
+        }
+
+        private void browseIW5Button_Click(object sender, EventArgs e)
+        {
+            var openDialog = new FolderBrowserDialog();
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                iw5PathTextBox.Text = openDialog.SelectedPath;
             }
         }
     }

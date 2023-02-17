@@ -9,14 +9,14 @@
     using System.Windows.Forms;
     using System.Diagnostics;
 
-    public class IW3xportHelper : ExportHelper
+    public class IW5xportHelper : ExportHelper
     {
-        private const string EXECUTABLE_NAME = "iw3xport.exe";
+        private const string EXECUTABLE_NAME = "open-iw5.exe";
 
         public static Map[] GetMapList(ref Paths paths)
         {
             List<Map> maps = new List<Map>();
-            string basePath = paths.IW3Path;
+            string basePath = paths.IW5Path;
 
             for (int i = 0; i < CANONICAL_LANGUAGES.Length; i++)
             {
@@ -48,7 +48,7 @@
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Could not list canonical maps for iw3 for language {lang}!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Could not list canonical maps for iw5 for language {lang}!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
@@ -71,16 +71,16 @@
                     }
                 }
                 catch (Exception ex) {
-                    MessageBox.Show($"Could not list user maps for iw3!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Could not list user maps for iw5!\n{ex}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
             return maps.ToArray();
         }
 
-        public static int DumpMap(Map map, ref Paths paths, bool correctSpeculars, bool convertGSCs, uint correctSmodelsMethod, Action<string> pipe)
+        public static int DumpMap(Map map, ref Paths paths, Action<string> pipe)
         {
-            string exePath = Path.Combine(paths.IW3Path, EXECUTABLE_NAME);
+            string exePath = Path.Combine(paths.IW5Path, EXECUTABLE_NAME);
 
             if (!File.Exists(exePath)) {
                 pipe.Invoke($"Missing {exePath}!");
@@ -90,8 +90,8 @@
             var proc = new Process {
                 StartInfo = new ProcessStartInfo {
                     FileName = exePath,
-                    WorkingDirectory = paths.IW3Path,
-                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(correctSpeculars ? 1 : 0)} +set iw3x_smodels_fix_method {correctSmodelsMethod} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
+                    WorkingDirectory = paths.IW5Path,
+                    Arguments = $"-multiplayer -exporter +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
@@ -116,5 +116,6 @@
 
             return proc.ExitCode;
         }
+
     }
 }

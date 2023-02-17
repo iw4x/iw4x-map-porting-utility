@@ -24,14 +24,21 @@
         {
             InitializeComponent();
             iw3MapListBox.ItemCheck += Iw3MapListBox_ItemCheck;
+            iw5MapListBox.ItemCheck += Iw5MapListBox_ItemCheck; ;
             iw4ZoneListBox.ItemCheck += Iw4ZoneListBox_ItemCheck;
             outputTextBox.Text = string.Empty;
             smodelsFixComboBox.SelectedIndex = 1;
 
             SetupTooltips();
 
-            RefreshIW4Buttons(); 
+            RefreshIW4Buttons();
             RefreshIW3Buttons();
+            RefreshIW5Buttons();
+        }
+
+        private void Iw5MapListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)RefreshIW5Buttons);
         }
 
         private void Iw4ZoneListBox_ItemCheck(object _a, ItemCheckEventArgs _b)
@@ -44,9 +51,14 @@
             this.BeginInvoke((MethodInvoker)RefreshIW3Buttons);
         }
 
+        private void RefreshIW5Buttons()
+        {
+            iw5ExportButton.Enabled = iw5MapListBox.CheckedItems.Count > 0;
+        }
+
         private void RefreshIW3Buttons()
         {
-            exportButton.Enabled = iw3MapListBox.CheckedItems.Count > 0;
+            iw3ExportButton.Enabled = iw3MapListBox.CheckedItems.Count > 0;
         }
 
         private void RefreshIW4Buttons()
@@ -75,14 +87,57 @@
             }
 
             if (paths.IsValid) {
-                RefreshIW3MapList();
+                RefreshIW3();
+                RefreshIW5();
                 RefreshZoneSourcesList();
-                RefreshIW3Buttons();
                 RefreshIW4Buttons();
             }
             else {
                 Application.Exit();
             }
+        }
+
+        private void RefreshIW5()
+        {
+            bool iw5PathIsGood = paths.IsIW5PathGood(out _);
+
+            (iw5TabPage as Control).Enabled = iw5PathIsGood;
+
+            if (iw5PathIsGood) {
+                RefreshIW5MapList();
+                RefreshIW5Buttons();
+            }
+        }
+
+        private void RefreshIW3()
+        {
+            bool iw3PathIsGood = paths.IsIW3PathGood(out _);
+
+            (iw3TabPage as Control).Enabled = iw3PathIsGood;
+
+            if (iw3PathIsGood) {
+                RefreshIW3MapList();
+                RefreshIW3Buttons();
+            }
+        }
+
+        private void RefreshIW5MapList()
+        {
+            var maps = IW5xportHelper.GetMapList(ref paths);
+
+            iw5MapListBox.SuspendLayout();
+
+            iw5MapListBox.Items.Clear();
+
+            for (int i = 0; i < System.Enum.GetValues(typeof(ExportHelper.Map.ECategory)).Length; i++) {
+                foreach (var map in maps) {
+                    if (map.Category == (ExportHelper.Map.ECategory)i) {
+                        iw5MapListBox.Items.Add(map, false);
+                    }
+                }
+            }
+
+            iw5MapListBox.ResumeLayout();
         }
 
         private void RefreshIW3MapList()
@@ -93,9 +148,9 @@
 
             iw3MapListBox.Items.Clear();
 
-            for (int i = 0; i < System.Enum.GetValues(typeof(IW3xportHelper.Map.ECategory)).Length; i++) {
+            for (int i = 0; i < System.Enum.GetValues(typeof(ExportHelper.Map.ECategory)).Length; i++) {
                 foreach (var map in maps) {
-                    if (map.Category == (IW3xportHelper.Map.ECategory)i) {
+                    if (map.Category == (ExportHelper.Map.ECategory)i) {
                         iw3MapListBox.Items.Add(map, false);
                     }
                 }
@@ -121,124 +176,13 @@
 
         private void iw3RefreshButton_Click(object sender, EventArgs e)
         {
-            RefreshIW3MapList();
-            RefreshIW3Buttons();
+            RefreshIW3();
         }
 
-        private void exportButton_Click(object sender, EventArgs e)
+
+        private void iw5RefreshButton_Click(object sender, EventArgs e)
         {
-            outputTextBox.Clear();
-
-            Enabled = false;
-
-            bool shouldWriteSource = generateSourceCheckbox.Checked;
-            bool shouldWriteArena = generateArenaCheckbox.Checked;
-            bool shouldConvertGSC = convertGscCheckbox.Checked;
-            bool shouldCorrectSpeculars = correctSpecularsCheckbox.Checked;
-            bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
-            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
-            uint correctSModelsMethod = (uint)smodelsFixComboBox.SelectedIndex;
-
-            List<IW3xportHelper.Map> mapsToDump = new List<IW3xportHelper.Map>();
-            Dictionary<IW3xportHelper.Map, int> indices = new Dictionary<IW3xportHelper.Map, int>();
-            List<string> successfullyDumpedMaps = new List<string>();
-
-            int i = 0;
-            foreach (var item in iw3MapListBox.CheckedItems) {
-                if (item is IW3xportHelper.Map map) {
-                    mapsToDump.Add(map);
-                    indices.Add(map, i++);
-                }
-            }
-
-            bool hadError = false;
-
-            Task.Run(() =>
-            {
-                foreach (var map in mapsToDump) {
-                    Action untick = () =>
-                    {
-                        iw3MapListBox.SetItemChecked(indices[map], false);
-                        RefreshZoneSourcesList();
-                    };
-
-                    try {
-                        int exitCode = IW3xportHelper.DumpMap(
-                            map,
-                            ref paths,
-                            shouldCorrectSpeculars,
-                            shouldConvertGSC,
-                            correctSModelsMethod,
-                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt));;
-
-                        outputTextBox.Invoke(updateTextBox, this, $"IW3xport program terminated with output {exitCode}");
-
-                        if (exitCode == 0) {
-                            // All good!
-                            iw3MapListBox.Invoke(untick);
-
-                            IW3xportHelper.Map mapCpy = map;
-                            var project = new ZoneProject(ref mapCpy, ref paths);
-                            project.Generate(includeGenericSounds);
-
-                            if (shouldWriteSource) {
-
-                                ZoneBuilderHelper.WriteSourceForProject(ref project, ref paths);
-                                outputTextBox.Invoke(updateTextBox, this, $"Generated source file for {map.Name}");
-                            }
-
-                            if (shouldWriteArena) {
-                                ZoneBuilderHelper.WriteArena(map.Name, ref paths);
-                                outputTextBox.Invoke(updateTextBox, this, $"Generated arenafile for {map.Name}");
-                            }
-
-                            ZoneBuilderHelper.WriteAdditionalFilesForProject(ref project, replaceExistingGSC: shouldOverwriteGSC);
-
-                            successfullyDumpedMaps.Add(map.Name);
-                        }
-                        else {
-                            hadError = true;
-                            break;
-                        }
-                    }
-                    catch (Exception ex) {
-                        hadError = true;
-                        outputTextBox.Invoke(updateTextBox, this, ex.ToString());
-                        break;
-                    }
-                }
-
-                Action postExport = () =>
-                {
-                    if (hadError) {
-                        MessageBox.Show($"An error occured while exporting the map (check the console). Exporting was interrupted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else {
-                        outputTextBox.AppendText($"Export successful! {Environment.NewLine}");
-                    }
-
-                    RefreshZoneSourcesList();
-                    RefreshIW3Buttons();
-
-                    if (!hadError) {
-                        // Check maps we ported successfully
-                        for (int j = 0; j < iw4ZoneListBox.Items.Count; j++) {
-                            string sourceName = System.IO.Path.GetFileNameWithoutExtension(iw4ZoneListBox.Items[j].ToString()).ToUpper();
-
-                            if (successfullyDumpedMaps.Find(o => o.ToUpper() == sourceName) != null) {
-                                iw4ZoneListBox.SetItemChecked(j, true);
-                            }
-                            else {
-                                iw4ZoneListBox.SetItemChecked(j, false);
-                            }
-                        }
-                    }
-
-                    Enabled = true;
-                };
-
-                Invoke(postExport);
-            });
+            RefreshIW5();
         }
 
         private void zbRefreshButton_Click(object sender, EventArgs e)
@@ -252,9 +196,9 @@
             PromptForPaths();
 
             if (paths.IsValid) {
-                RefreshIW3MapList();
+                RefreshIW3();
+                RefreshIW5();
                 RefreshZoneSourcesList();
-                RefreshIW3Buttons();
                 RefreshIW4Buttons();
             }
             else {
@@ -449,8 +393,8 @@
         {
             if (iw4ZoneListBox.CheckedItems.Count == 1) {
                 string mapName = iw4ZoneListBox.CheckedItems[0].ToString();
-                if (ZoneBuilderHelper.MapFileExists(mapName, ref paths)) {
-                    string arenaFile = ZoneBuilderHelper.GetArenaFilePath(mapName, ref paths);
+                string arenaFile = ZoneBuilderHelper.GetArenaFilePath(mapName, ref paths);
+                if (System.IO.File.Exists(arenaFile)) {
                     System.Diagnostics.Process.Start("notepad", arenaFile);
                 }
             }
@@ -460,15 +404,17 @@
         {
             if (iw4ZoneListBox.CheckedItems.Count == 1) {
                 string mapName = iw4ZoneListBox.CheckedItems[0].ToString();
-                if (ZoneBuilderHelper.MapFileExists(mapName, ref paths)) {
-                    System.Diagnostics.Process.Start($"{ZoneBuilderHelper.GetZoneSourcePath(mapName, ref paths)}");
+                string sourceFile = ZoneBuilderHelper.GetZoneSourcePath(mapName, ref paths);
+                if (System.IO.File.Exists(sourceFile)) {
+                    System.Diagnostics.Process.Start($"{sourceFile}");
                 }
             }
         }
 
         private void SetupTooltips()
         {
-            new ToolTip().SetToolTip(exportButton, "Dump selected map(s) with the specified settings and put it in <iw4x game folder>/mods/<name of the map>");
+            new ToolTip().SetToolTip(iw3ExportButton, "Dump selected map(s) with the specified settings and put it in <iw4x game folder>/mods/<name of the map>");
+            new ToolTip().SetToolTip(iw5ExportButton, "Dump selected map(s) with the specified settings and put it in <iw4x game folder>/mods/<name of the map>");
             new ToolTip().SetToolTip(generateSourceCheckbox, "Generate a CSV to build this map again later and place it in <iw4x game folder>/zone_source");
             new ToolTip().SetToolTip(generateArenaCheckbox, "Generate an arena file with teams and gamemode information and place it in <iw4x game folder>/usermaps/<name of the map>");
             new ToolTip().SetToolTip(convertGscCheckbox, "Attempt to automatically upgrade GSC from iw3 functions to iw4 equivalents and fix fog/specular calls");
@@ -486,6 +432,237 @@
             new ToolTip().SetToolTip(editArenaFileButton, "Edit the arena file (teams, gamemodes, environment, ...)");
             new ToolTip().SetToolTip(editCSVButton, "Edit the source file manually");
 
+        }
+
+        private void iw3ExportButton_Click(object sender, EventArgs e)
+        {
+            outputTextBox.Clear();
+
+            Enabled = false;
+
+            bool shouldWriteSource = generateSourceCheckbox.Checked;
+            bool shouldWriteArena = generateArenaCheckbox.Checked;
+            bool shouldConvertGSC = convertGscCheckbox.Checked;
+            bool shouldCorrectSpeculars = correctSpecularsCheckbox.Checked;
+            bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
+            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
+            uint correctSModelsMethod = (uint)smodelsFixComboBox.SelectedIndex;
+
+            List<ExportHelper.Map> mapsToDump = new List<ExportHelper.Map>();
+            Dictionary<ExportHelper.Map, int> indices = new Dictionary<ExportHelper.Map, int>();
+            List<string> successfullyDumpedMaps = new List<string>();
+
+            int i = 0;
+            foreach (var item in iw3MapListBox.CheckedItems) {
+                if (item is ExportHelper.Map map) {
+                    mapsToDump.Add(map);
+                    indices.Add(map, i++);
+                }
+            }
+
+            bool hadError = false;
+
+            Task.Run(() =>
+            {
+                foreach (var map in mapsToDump) {
+                    Action untick = () =>
+                    {
+                        iw3MapListBox.SetItemChecked(indices[map], false);
+                        RefreshZoneSourcesList();
+                    };
+
+                    try {
+                        int exitCode = IW3xportHelper.DumpMap(
+                            map,
+                            ref paths,
+                            shouldCorrectSpeculars,
+                            shouldConvertGSC,
+                            correctSModelsMethod,
+                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt)); ;
+
+                        outputTextBox.Invoke(updateTextBox, this, $"IW3xport program terminated with output {exitCode}");
+
+                        if (exitCode == 0) {
+                            // All good!
+                            iw3MapListBox.Invoke(untick);
+
+                            ExportHelper.Map mapCpy = map;
+                            var project = new ZoneProject(ref mapCpy, ref paths);
+                            project.Generate(includeGenericSounds);
+
+                            if (shouldWriteSource) {
+
+                                ZoneBuilderHelper.WriteSourceForProject(ref project, ref paths);
+                                outputTextBox.Invoke(updateTextBox, this, $"Generated source file for {map.Name}");
+                            }
+
+                            if (shouldWriteArena) {
+                                ZoneBuilderHelper.WriteArena(map.Name, ref paths);
+                                outputTextBox.Invoke(updateTextBox, this, $"Generated arenafile for {map.Name}");
+                            }
+
+                            ZoneBuilderHelper.WriteAdditionalFilesForProject(ref project, replaceExistingGSC: shouldOverwriteGSC);
+
+                            successfullyDumpedMaps.Add(map.Name);
+                        }
+                        else {
+                            hadError = true;
+                            break;
+                        }
+                    }
+                    catch (Exception ex) {
+                        hadError = true;
+                        outputTextBox.Invoke(updateTextBox, this, ex.ToString());
+                        break;
+                    }
+                }
+
+                Action postExport = () =>
+                {
+                    if (hadError) {
+                        MessageBox.Show($"An error occured while exporting the map (check the console). Exporting was interrupted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else {
+                        outputTextBox.AppendText($"Export successful! {Environment.NewLine}");
+                    }
+
+                    RefreshZoneSourcesList();
+                    RefreshIW3Buttons();
+
+                    if (!hadError) {
+                        // Check maps we ported successfully
+                        for (int j = 0; j < iw4ZoneListBox.Items.Count; j++) {
+                            string sourceName = System.IO.Path.GetFileNameWithoutExtension(iw4ZoneListBox.Items[j].ToString()).ToUpper();
+
+                            if (successfullyDumpedMaps.Find(o => o.ToUpper() == sourceName) != null) {
+                                iw4ZoneListBox.SetItemChecked(j, true);
+                            }
+                            else {
+                                iw4ZoneListBox.SetItemChecked(j, false);
+                            }
+                        }
+                    }
+
+                    Enabled = true;
+                };
+
+                Invoke(postExport);
+            });
+        }
+
+        private void iw5ExportButton_Click(object sender, EventArgs e)
+        {
+            outputTextBox.Clear();
+
+            Enabled = false;
+
+            bool shouldWriteSource = iw5OverwriteSource.Checked;
+            bool shouldWriteArena = iw5GenerateArena.Checked;
+
+            List<ExportHelper.Map> mapsToDump = new List<ExportHelper.Map>();
+            Dictionary<ExportHelper.Map, int> indices = new Dictionary<ExportHelper.Map, int>();
+            List<string> successfullyDumpedMaps = new List<string>();
+
+            int i = 0;
+            foreach (var item in iw5MapListBox.CheckedItems) {
+                if (item is ExportHelper.Map map) {
+                    mapsToDump.Add(map);
+                    indices.Add(map, i++);
+                }
+            }
+
+            bool hadError = false;
+
+            Task.Run(() =>
+            {
+                foreach (var map in mapsToDump) {
+                    Action untick = () =>
+                    {
+                        iw5MapListBox.SetItemChecked(indices[map], false);
+                        RefreshZoneSourcesList();
+                    };
+
+                    try {
+                        int exitCode = IW5xportHelper.DumpMap(
+                            map,
+                            ref paths,
+                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt)); ;
+
+                        outputTextBox.Invoke(updateTextBox, this, $"IW5xport program terminated with output {exitCode}");
+
+                        if (exitCode == 0) {
+                            // All good!
+                            iw5MapListBox.Invoke(untick);
+
+                            if (shouldWriteSource) {
+                                ExportHelper.Map mapCpy = map;
+                                var outputDestination = ExportHelper.GetDumpDestinationPath(ref mapCpy, ref paths);
+
+                                foreach (var suffix in new string[] { ".csv", "_load.csv" }) {
+                                    string file = $"{System.IO.Path.Combine(outputDestination, map.Name)}{suffix}";
+
+                                    if (System.IO.File.Exists(file)) {
+                                        System.IO.File.Copy(
+                                            file,
+                                            System.IO.Path.Combine(ZoneBuilderHelper.GetSourceFolderPath(ref paths), System.IO.Path.GetFileName(file)),
+                                            overwrite: true
+                                        );
+                                    }
+
+                                    outputTextBox.Invoke(updateTextBox, this, $"Copied source file {map.Name}{suffix} for {map.Name}");
+                                }
+                            }
+
+                            if (shouldWriteArena) {
+                                ZoneBuilderHelper.WriteArena(map.Name, ref paths);
+                                outputTextBox.Invoke(updateTextBox, this, $"Generated arenafile for {map.Name}");
+                            }
+
+                            successfullyDumpedMaps.Add(map.Name);
+                        }
+                        else {
+                            hadError = true;
+                            break;
+                        }
+                    }
+                    catch (Exception ex) {
+                        hadError = true;
+                        outputTextBox.Invoke(updateTextBox, this, ex.ToString());
+                        break;
+                    }
+                }
+
+                Action postExport = () =>
+                {
+                    if (hadError) {
+                        MessageBox.Show($"An error occured while exporting the map (check the console). Exporting was interrupted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else {
+                        outputTextBox.AppendText($"Export successful! {Environment.NewLine}");
+                    }
+
+                    RefreshZoneSourcesList();
+                    RefreshIW5Buttons();
+
+                    if (!hadError) {
+                        // Check maps we ported successfully
+                        for (int j = 0; j < iw4ZoneListBox.Items.Count; j++) {
+                            string sourceName = System.IO.Path.GetFileNameWithoutExtension(iw4ZoneListBox.Items[j].ToString()).ToUpper();
+
+                            if (successfullyDumpedMaps.Find(o => o.ToUpper() == sourceName) != null) {
+                                iw4ZoneListBox.SetItemChecked(j, true);
+                            }
+                            else {
+                                iw4ZoneListBox.SetItemChecked(j, false);
+                            }
+                        }
+                    }
+
+                    Enabled = true;
+                };
+
+                Invoke(postExport);
+            });
         }
     }
 }
