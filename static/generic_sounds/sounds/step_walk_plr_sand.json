@@ -6,21 +6,20 @@
             "aliasName": "step_walk_plr_sand",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1000,
-            "distMin": 50,
+            "distMax": 25000.0,
+            "distMin": 5000.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
-            "pitchMin": 0.850000023841858,
-            "probability": 0.850000023841858,
+            "pitchMax": 1.0499999523162842,
+            "pitchMin": 0.8500000238418579,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09469436033055e-41,
-            "soundfile": "footsteps/mrk_foot_dirtsand01.wav",
+            "slavePercentage": 0.8500000238418579,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,32 +142,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/mrk_foot_dirtsand01.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.236701995134354,
-            "volMin": 0.174411997199059,
+            "volMax": 0.3799999952316284,
+            "volMin": 0.2800000011920929,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_walk_plr_sand",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1000,
-            "distMin": 50,
+            "distMax": 25000.0,
+            "distMin": 5000.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
-            "pitchMin": 0.850000023841858,
-            "probability": 0.850000023841858,
+            "pitchMax": 1.0499999523162842,
+            "pitchMin": 0.8500000238418579,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09469436033055e-41,
-            "soundfile": "footsteps/mrk_foot_dirtsand02.wav",
+            "slavePercentage": 0.8500000238418579,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -233,14 +232,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -250,14 +249,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -291,32 +290,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/mrk_foot_dirtsand02.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.236701995134354,
-            "volMin": 0.174411997199059,
+            "volMax": 0.3799999952316284,
+            "volMin": 0.2800000011920929,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_walk_plr_sand",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1000,
-            "distMin": 50,
+            "distMax": 25000.0,
+            "distMin": 5000.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
-            "pitchMin": 0.850000023841858,
-            "probability": 0.850000023841858,
+            "pitchMax": 1.0499999523162842,
+            "pitchMin": 0.8500000238418579,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09469436033055e-41,
-            "soundfile": "footsteps/mrk_foot_dirtsand03.wav",
+            "slavePercentage": 0.8500000238418579,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -381,14 +380,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -398,14 +397,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -439,32 +438,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/mrk_foot_dirtsand03.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.236701995134354,
-            "volMin": 0.174411997199059,
+            "volMax": 0.3799999952316284,
+            "volMin": 0.2800000011920929,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_walk_plr_sand",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1000,
-            "distMin": 50,
+            "distMax": 25000.0,
+            "distMin": 5000.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
-            "pitchMin": 0.850000023841858,
-            "probability": 0.850000023841858,
+            "pitchMax": 1.0499999523162842,
+            "pitchMin": 0.8500000238418579,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09469436033055e-41,
-            "soundfile": "footsteps/mrk_foot_dirtsand04.wav",
+            "slavePercentage": 0.8500000238418579,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -529,14 +528,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -546,14 +545,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -587,11 +586,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/mrk_foot_dirtsand04.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.236701995134354,
-            "volMin": 0.174411997199059,
+            "volMax": 0.3799999952316284,
+            "volMin": 0.2800000011920929,
             "volumeFalloffCurve": "weapon1"
         }
     ]

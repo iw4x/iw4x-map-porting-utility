@@ -24,10 +24,10 @@
         {
             InitializeComponent();
             iw3MapListBox.ItemCheck += Iw3MapListBox_ItemCheck;
-            iw5MapListBox.ItemCheck += Iw5MapListBox_ItemCheck; ;
+            iw5MapListBox.ItemCheck += Iw5MapListBox_ItemCheck;
             iw4ZoneListBox.ItemCheck += Iw4ZoneListBox_ItemCheck;
             outputTextBox.Text = string.Empty;
-            smodelsFixComboBox.SelectedIndex = 1;
+            smodelsFixComboBox.SelectedIndex = 2;
 
             SetupTooltips();
 
@@ -465,9 +465,10 @@
             Task.Run(() =>
             {
                 foreach (var map in mapsToDump) {
+                    var mapCpy = map;
                     Action untick = () =>
                     {
-                        iw3MapListBox.SetItemChecked(indices[map], false);
+                        iw3MapListBox.SetItemChecked(indices[mapCpy], false);
                         RefreshZoneSourcesList();
                     };
 
@@ -486,7 +487,6 @@
                             // All good!
                             iw3MapListBox.Invoke(untick);
 
-                            ExportHelper.Map mapCpy = map;
                             var project = new ZoneProject(ref mapCpy, ref paths);
                             project.Generate(includeGenericSounds);
 
@@ -576,9 +576,10 @@
             Task.Run(() =>
             {
                 foreach (var map in mapsToDump) {
+                    var mapCpy = map;
                     Action untick = () =>
                     {
-                        iw5MapListBox.SetItemChecked(indices[map], false);
+                        iw5MapListBox.SetItemChecked(indices[mapCpy], false);
                         RefreshZoneSourcesList();
                     };
 
@@ -595,7 +596,6 @@
                             iw5MapListBox.Invoke(untick);
 
                             if (shouldWriteSource) {
-                                ExportHelper.Map mapCpy = map;
                                 var outputDestination = ExportHelper.GetDumpDestinationPath(ref mapCpy, ref paths);
 
                                 foreach (var suffix in new string[] { ".csv", "_load.csv" }) {

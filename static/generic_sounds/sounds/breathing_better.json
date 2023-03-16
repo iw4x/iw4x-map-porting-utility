@@ -6,21 +6,20 @@
             "aliasName": "breathing_better",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1200,
-            "distMin": 120,
+            "distMax": 1200.0,
+            "distMin": 120.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 14976,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
+            "pitchMax": 1.0499999523162842,
             "pitchMin": 0.949999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 2.09858458017285e-41,
-            "soundfile": "misc/mrk_breathing_better10.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,32 +142,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "misc/mrk_breathing_better10.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.930000007152557,
-            "volMin": 0.837000012397766,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         },
         {
             "aliasName": "breathing_better",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1200,
-            "distMin": 120,
+            "distMax": 1200.0,
+            "distMin": 120.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 14976,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
+            "pitchMax": 1.0499999523162842,
             "pitchMin": 0.949999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 2.09858458017285e-41,
-            "soundfile": "misc/mrk_breathing_better11.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -233,14 +232,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -250,14 +249,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -291,32 +290,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "misc/mrk_breathing_better11.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.930000007152557,
-            "volMin": 0.837000012397766,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         },
         {
             "aliasName": "breathing_better",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1200,
-            "distMin": 120,
+            "distMax": 1200.0,
+            "distMin": 120.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 14976,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 1.04999995231628,
+            "pitchMax": 1.0499999523162842,
             "pitchMin": 0.949999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 2.09858458017285e-41,
-            "soundfile": "misc/mrk_breathing_better12.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -381,14 +380,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -398,14 +397,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -439,11 +438,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "misc/mrk_breathing_better12.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.930000007152557,
-            "volMin": 0.837000012397766,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         }
     ]

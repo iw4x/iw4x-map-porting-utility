@@ -4,23 +4,22 @@
     "head": [
         {
             "aliasName": "rocket_explode_plaster",
-            "centerPercentage": 0.600000023841858,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 6000,
-            "distMin": 200,
+            "distMax": 6000.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.6000000238418579,
             "mixerGroup": null,
-            "pitchMax": 1.10000002384186,
-            "pitchMin": 0.899999976158142,
-            "probability": 0.5,
+            "pitchMax": 1.100000023841858,
+            "pitchMin": 0.8999999761581421,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer",
             "sequence": 0,
-            "slavePercentage": 1.38168028582427e-41,
-            "soundfile": "explosions/grenade_explod_a10.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,32 +142,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/grenade_explod_a10.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.730700016021729,
-            "volMin": 0.657630026340485,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         },
         {
             "aliasName": "rocket_explode_plaster",
-            "centerPercentage": 0.600000023841858,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 6000,
-            "distMin": 200,
+            "distMax": 6000.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.6000000238418579,
             "mixerGroup": null,
-            "pitchMax": 1.10000002384186,
-            "pitchMin": 0.899999976158142,
-            "probability": 0.5,
+            "pitchMax": 1.100000023841858,
+            "pitchMin": 0.8999999761581421,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer",
             "sequence": 0,
-            "slavePercentage": 1.38168028582427e-41,
-            "soundfile": "explosions/grenade_explod_a12.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -233,14 +232,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -250,14 +249,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -291,32 +290,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/grenade_explod_a12.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.730700016021729,
-            "volMin": 0.657630026340485,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         },
         {
             "aliasName": "rocket_explode_plaster",
-            "centerPercentage": 0.600000023841858,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 6000,
-            "distMin": 200,
+            "distMax": 6000.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.6000000238418579,
             "mixerGroup": null,
-            "pitchMax": 1.10000002384186,
-            "pitchMin": 0.899999976158142,
-            "probability": 0.5,
+            "pitchMax": 1.100000023841858,
+            "pitchMin": 0.8999999761581421,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer",
             "sequence": 0,
-            "slavePercentage": 1.38168028582427e-41,
-            "soundfile": "explosions/grenade_explod_a13.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -381,14 +380,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -398,14 +397,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -439,32 +438,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/grenade_explod_a13.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.730700016021729,
-            "volMin": 0.657630026340485,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         },
         {
             "aliasName": "rocket_explode_plaster",
-            "centerPercentage": 0.600000023841858,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 6000,
-            "distMin": 200,
+            "distMax": 6000.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.6000000238418579,
             "mixerGroup": null,
-            "pitchMax": 1.10000002384186,
-            "pitchMin": 0.899999976158142,
-            "probability": 0.5,
+            "pitchMax": 1.100000023841858,
+            "pitchMin": 0.8999999761581421,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer",
             "sequence": 0,
-            "slavePercentage": 1.38168028582427e-41,
-            "soundfile": "explosions/grenade_explod_a16.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -529,14 +528,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -546,14 +545,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -587,11 +586,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/grenade_explod_a16.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.730700016021729,
-            "volMin": 0.657630026340485,
+            "volMax": 1.0,
+            "volMin": 0.8999999761581421,
             "volumeFalloffCurve": "$default"
         }
     ]

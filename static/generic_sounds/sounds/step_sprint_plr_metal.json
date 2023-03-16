@@ -6,21 +6,20 @@
             "aliasName": "step_sprint_plr_metal",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1500,
-            "distMin": 50,
+            "distMax": 1500.0,
+            "distMin": 50.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.850000023841858,
+            "pitchMax": 0.8500000238418579,
             "pitchMin": 0.699999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09413384094482e-41,
-            "soundfile": "footsteps/foot_metal01.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,32 +142,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/foot_metal01.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.29899200797081,
-            "volMin": 0.249160006642342,
+            "volMax": 0.47999998927116394,
+            "volMin": 0.4000000059604645,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_sprint_plr_metal",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1500,
-            "distMin": 50,
+            "distMax": 1500.0,
+            "distMin": 50.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.850000023841858,
+            "pitchMax": 0.8500000238418579,
             "pitchMin": 0.699999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09413384094482e-41,
-            "soundfile": "footsteps/foot_metal02.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -233,14 +232,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -250,14 +249,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -291,32 +290,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/foot_metal02.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.29899200797081,
-            "volMin": 0.249160006642342,
+            "volMax": 0.47999998927116394,
+            "volMin": 0.4000000059604645,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_sprint_plr_metal",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1500,
-            "distMin": 50,
+            "distMax": 1500.0,
+            "distMin": 50.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.850000023841858,
+            "pitchMax": 0.8500000238418579,
             "pitchMin": 0.699999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09413384094482e-41,
-            "soundfile": "footsteps/foot_metal03.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -381,14 +380,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -398,14 +397,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -439,32 +438,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/foot_metal03.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.29899200797081,
-            "volMin": 0.249160006642342,
+            "volMax": 0.47999998927116394,
+            "volMin": 0.4000000059604645,
             "volumeFalloffCurve": "weapon1"
         },
         {
             "aliasName": "step_sprint_plr_metal",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1500,
-            "distMin": 50,
+            "distMax": 1500.0,
+            "distMin": 50.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.850000023841858,
+            "pitchMax": 0.8500000238418579,
             "pitchMin": 0.699999988079071,
-            "probability": 1,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 1.09413384094482e-41,
-            "soundfile": "footsteps/foot_metal04.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -529,14 +528,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -546,14 +545,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -587,11 +586,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/foot_metal04.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.29899200797081,
-            "volMin": 0.249160006642342,
+            "volMax": 0.47999998927116394,
+            "volMin": 0.4000000059604645,
             "volumeFalloffCurve": "weapon1"
         }
     ]

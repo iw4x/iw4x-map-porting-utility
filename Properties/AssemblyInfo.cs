@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("IW4x Map Porting Utility")]
-[assembly: AssemblyDescription("Middleware for exporting maps from IW3 and building maps for IW4x. Made by louvenarde@louve.systems!")]
+[assembly: AssemblyDescription("Middleware for exporting maps from IW3 and building maps for IW4x. Made by louvenarde@xlabs!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("XLabs")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.5.0")]
-[assembly: AssemblyFileVersion("1.0.5.0")]
+[assembly: AssemblyVersion("1.0.6.0")]
+[assembly: AssemblyFileVersion("1.0.6.0")]
 [assembly: NeutralResourcesLanguage("en")]

@@ -6,21 +6,20 @@
             "aliasName": "ui_pulse_text_type",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 2500000,
-            "distMin": 500000,
+            "distMax": 2500000.0,
+            "distMin": 500000.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 6808,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.959999978542328,
-            "pitchMin": 0.930000007152557,
-            "probability": 1,
+            "pitchMax": 0.9599999785423279,
+            "pitchMin": 0.9300000071525574,
+            "probability": 1.0,
             "secondaryAliasName": null,
             "sequence": 0,
-            "slavePercentage": 9.54003994512335e-42,
-            "soundfile": "user_interface/ui_computer_text_blip1x.wav",
+            "slavePercentage": 1.0,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,11 +142,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "user_interface/ui_computer_text_blip1x.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.271188020706177,
-            "volMin": 0.203391015529633,
+            "volMax": 0.36000001430511475,
+            "volMin": 0.27000001072883606,
             "volumeFalloffCurve": "$default"
         }
     ]

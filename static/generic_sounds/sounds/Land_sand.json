@@ -6,21 +6,20 @@
             "aliasName": "Land_sand",
             "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 1000,
-            "distMin": 80,
+            "distMax": 1600.0,
+            "distMin": 80.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 7296,
+            "lfePercentage": 0.0,
             "mixerGroup": null,
-            "pitchMax": 0.899999976158142,
-            "pitchMin": 0.899999976158142,
-            "probability": 0.850000023841858,
+            "pitchMax": 0.8999999761581421,
+            "pitchMin": 0.8999999761581421,
+            "probability": 1.0,
             "secondaryAliasName": "gear_rattle_land",
             "sequence": 0,
-            "slavePercentage": 1.02294787895712e-41,
-            "soundfile": "footsteps/mrk_land_dirtsand.wav",
+            "slavePercentage": 0.8500000238418579,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,11 +142,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "footsteps/mrk_land_dirtsand.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.568819999694824,
-            "volMin": 0.487560033798218,
+            "volMax": 0.8500000238418579,
+            "volMin": 0.8500000238418579,
             "volumeFalloffCurve": "$default"
         }
     ]

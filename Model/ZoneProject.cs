@@ -70,7 +70,6 @@ rawfile,maps/createart/{MapName}_art.gsc
 # {DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()}
 ########################
 
-map_ents,maps/mp/{MapName}.d3dbsp
 col_map_mp,maps/mp/{MapName}.d3dbsp
 fx_map,maps/mp/{MapName}.d3dbsp
 com_map,maps/mp/{MapName}.d3dbsp

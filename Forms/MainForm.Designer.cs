@@ -296,19 +296,19 @@
             // 
             this.inputTabs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.inputTabs.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.inputTabs.Controls.Add(this.iw3TabPage);
             this.inputTabs.Controls.Add(this.iw5TabPage);
             this.inputTabs.ImageList = this.imageList1;
             this.inputTabs.Location = new System.Drawing.Point(12, 27);
             this.inputTabs.Name = "inputTabs";
+            this.inputTabs.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.inputTabs.SelectedIndex = 0;
             this.inputTabs.Size = new System.Drawing.Size(367, 305);
             this.inputTabs.TabIndex = 6;
             // 
             // iw3TabPage
             // 
-            this.iw3TabPage.BackColor = System.Drawing.SystemColors.Menu;
+            this.iw3TabPage.BackColor = System.Drawing.Color.Transparent;
             this.iw3TabPage.Controls.Add(this.iw3RefreshButton);
             this.iw3TabPage.Controls.Add(label1);
             this.iw3TabPage.Controls.Add(this.smodelsFixComboBox);
@@ -321,12 +321,13 @@
             this.iw3TabPage.Controls.Add(this.iw3ExportButton);
             this.iw3TabPage.Controls.Add(this.iw3MapListBox);
             this.iw3TabPage.ImageKey = "cod4_icon.png";
-            this.iw3TabPage.Location = new System.Drawing.Point(4, 34);
+            this.iw3TabPage.Location = new System.Drawing.Point(4, 31);
             this.iw3TabPage.Name = "iw3TabPage";
             this.iw3TabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.iw3TabPage.Size = new System.Drawing.Size(359, 267);
+            this.iw3TabPage.Size = new System.Drawing.Size(359, 270);
             this.iw3TabPage.TabIndex = 0;
             this.iw3TabPage.Text = "Call of Duty 4";
+            this.iw3TabPage.UseVisualStyleBackColor = true;
             // 
             // iw3RefreshButton
             // 
@@ -445,25 +446,26 @@
             this.iw3MapListBox.FormattingEnabled = true;
             this.iw3MapListBox.Location = new System.Drawing.Point(6, 6);
             this.iw3MapListBox.Name = "iw3MapListBox";
-            this.iw3MapListBox.Size = new System.Drawing.Size(194, 229);
+            this.iw3MapListBox.Size = new System.Drawing.Size(194, 259);
             this.iw3MapListBox.TabIndex = 16;
             this.iw3MapListBox.ThreeDCheckBoxes = true;
             // 
             // iw5TabPage
             // 
-            this.iw5TabPage.BackColor = System.Drawing.SystemColors.Menu;
+            this.iw5TabPage.BackColor = System.Drawing.Color.Transparent;
             this.iw5TabPage.Controls.Add(this.iw5RefreshButton);
             this.iw5TabPage.Controls.Add(this.iw5GenerateArena);
             this.iw5TabPage.Controls.Add(this.iw5OverwriteSource);
             this.iw5TabPage.Controls.Add(this.iw5ExportButton);
             this.iw5TabPage.Controls.Add(this.iw5MapListBox);
             this.iw5TabPage.ImageKey = "mw3_icon.png";
-            this.iw5TabPage.Location = new System.Drawing.Point(4, 34);
+            this.iw5TabPage.Location = new System.Drawing.Point(4, 31);
             this.iw5TabPage.Name = "iw5TabPage";
             this.iw5TabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.iw5TabPage.Size = new System.Drawing.Size(359, 267);
+            this.iw5TabPage.Size = new System.Drawing.Size(359, 270);
             this.iw5TabPage.TabIndex = 1;
             this.iw5TabPage.Text = "Modern Warfare 3";
+            this.iw5TabPage.UseVisualStyleBackColor = true;
             // 
             // iw5RefreshButton
             // 
@@ -521,7 +523,7 @@
             this.iw5MapListBox.FormattingEnabled = true;
             this.iw5MapListBox.Location = new System.Drawing.Point(6, 6);
             this.iw5MapListBox.Name = "iw5MapListBox";
-            this.iw5MapListBox.Size = new System.Drawing.Size(194, 229);
+            this.iw5MapListBox.Size = new System.Drawing.Size(194, 259);
             this.iw5MapListBox.TabIndex = 20;
             this.iw5MapListBox.ThreeDCheckBoxes = true;
             // 

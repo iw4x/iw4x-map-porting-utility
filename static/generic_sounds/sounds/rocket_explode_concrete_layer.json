@@ -4,23 +4,22 @@
     "head": [
         {
             "aliasName": "rocket_explode_concrete_layer",
-            "centerPercentage": 0.699999988079071,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 4500,
-            "distMin": 200,
+            "distMax": 4500.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.699999988079071,
             "mixerGroup": null,
-            "pitchMax": 1.20000004768372,
+            "pitchMax": 1.2000000476837158,
             "pitchMin": 0.800000011920929,
-            "probability": 0.5,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer_2",
             "sequence": 0,
-            "slavePercentage": 1.74041269269142e-41,
-            "soundfile": "explosions/mrk_rockexplosion_layer1.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -85,14 +84,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -102,14 +101,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -143,32 +142,32 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/mrk_rockexplosion_layer1.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.723393023014069,
-            "volMin": 0.694164991378784,
+            "volMax": 0.9900000095367432,
+            "volMin": 0.949999988079071,
             "volumeFalloffCurve": "reaction"
         },
         {
             "aliasName": "rocket_explode_concrete_layer",
-            "centerPercentage": 0.699999988079071,
+            "centerPercentage": 0.0,
             "chainAliasName": null,
-            "distMax": 4500,
-            "distMin": 200,
+            "distMax": 4500.0,
+            "distMin": 200.0,
             "envelopMax": 0.0,
             "envelopMin": 0.0,
             "envelopPercentage": 0.0,
-            "flags": 0,
-            "lfePercentage": 1,
+            "flags": 10880,
+            "lfePercentage": 0.699999988079071,
             "mixerGroup": null,
-            "pitchMax": 1.20000004768372,
+            "pitchMax": 1.2000000476837158,
             "pitchMin": 0.800000011920929,
-            "probability": 0.5,
+            "probability": 1.0,
             "secondaryAliasName": "rocket_explode_layer_2",
             "sequence": 0,
-            "slavePercentage": 1.74041269269142e-41,
-            "soundfile": "explosions/mrk_rockexplosion_layer5.wav",
+            "slavePercentage": 0.8999999761581421,
             "speakerMap": {
                 "channelMaps": [
                     {
@@ -233,14 +232,14 @@
                         "entryCount": 2,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             }
@@ -250,14 +249,14 @@
                         "entryCount": 6,
                         "speakers": [
                             {
-                                "levels0": 1,
+                                "levels0": 1.0,
                                 "levels1": 0.0,
                                 "numLevels": 2,
                                 "speaker": 0
                             },
                             {
                                 "levels0": 0.0,
-                                "levels1": 1,
+                                "levels1": 1.0,
                                 "numLevels": 2,
                                 "speaker": 1
                             },
@@ -291,11 +290,12 @@
                 "isDefault": true,
                 "name": ""
             },
+            "soundFile": "explosions/mrk_rockexplosion_layer5.wav",
             "startDelay": 0,
             "subtitle": null,
             "type": 1,
-            "volMax": 0.723393023014069,
-            "volMin": 0.694164991378784,
+            "volMax": 0.9900000095367432,
+            "volMin": 0.949999988079071,
             "volumeFalloffCurve": "reaction"
         }
     ]
