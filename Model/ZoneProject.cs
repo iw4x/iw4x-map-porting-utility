@@ -45,7 +45,7 @@
             additionalFiles = new List<AdditionalFile>();
         }
 
-        public void Generate(bool includeGenericSounds)
+        public void Generate(bool includeGenericSounds, bool greedy=false)
         {
             StringBuilder sourceBuilder = new StringBuilder();
 
@@ -164,11 +164,42 @@ weapon,turret_minigun_mp
 ");
             }
 
+            if (greedy)
+            {
+                List<string> strayAssets = new List<string>();
+                strayAssets.AddRange(MakeSourceForStrayAssetsOfType("xmodel"));
+                strayAssets.AddRange(MakeSourceForStrayAssetsOfType("techset", "techsets"));
+
+                for (int i = 0; i < strayAssets.Count; i++)
+                {
+                    sourceBuilder.AppendLine(strayAssets[i]);
+                }
+            }
+
             GenerateLoadAssets();
             GenerateMissingGSCs();
 
             // and that should be it ?
             Source = sourceBuilder.ToString();
+        }
+
+        private List<string> MakeSourceForStrayAssetsOfType(string type, string folder=null)
+        {
+            folder = folder ?? type;
+            var path = Path.Combine(MapDataPath, folder);
+            List<string> foundFiles = new List<string>();
+
+            if (Directory.Exists(path))
+            {
+                foundFiles.Add($"\n# Stray {type}s");
+                var files = Directory.GetFiles(path);
+                foreach (var file in files)
+                {
+                    foundFiles.Add($"{type},{Path.GetFileNameWithoutExtension(file).Replace(".iw4x", "")}");
+                }
+            }
+
+            return foundFiles;
         }
 
         private string[] GenerateGenericSounds(HashSet<string> skipSounds)

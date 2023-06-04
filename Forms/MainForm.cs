@@ -362,7 +362,7 @@
                     outputTextBox.Invoke(updateTextBox, this, $"Generating source for {item}...");
 
                     ZoneProject proj = new ZoneProject(ref map, ref paths);
-                    proj.Generate(includeGenericSounds);
+                    proj.Generate(includeGenericSounds, greedy: true);
                     ZoneBuilderHelper.WriteSourceForProject(ref proj, ref paths);
                     ZoneBuilderHelper.WriteAdditionalFilesForProject(ref proj, false);
                 }
@@ -419,6 +419,7 @@
             new ToolTip().SetToolTip(generateArenaCheckbox, "Generate an arena file with teams and gamemode information and place it in <iw4x game folder>/usermaps/<name of the map>");
             new ToolTip().SetToolTip(convertGscCheckbox, "Attempt to automatically upgrade GSC from iw3 functions to iw4 equivalents and fix fog/specular calls");
             new ToolTip().SetToolTip(correctSpecularsCheckbox, "Aggressively tone down the specular images to correspond to iw4's grading");
+            new ToolTip().SetToolTip(addCarePackageCheckbox, "Modifies the clipmap to add two care packages as required by iw4. Should be harmless.");
             new ToolTip().SetToolTip(replaceExistingFilesCheckbox, "Replace existing GSC files that might already be in <iw4x game folder>/mods/<name of the map>");
             new ToolTip().SetToolTip(includeGenericSoundsCheckbox, "Add a bunch of generic sounds to the zone - this increases the size of the map but ensures most sounds will be present");
             new ToolTip().SetToolTip(smodelsFixComboBox, "Some iw3 models cannot be used as static models on iw4. IW3xport will attempt to move them to entities instead, unless you pick \"Leave as is\". Models can be either removed from GfxWorld (best, but can sometimes cause visibility issues) or swapped around GfxWorld (worse, but safer)");
@@ -447,6 +448,7 @@
             bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
             bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
             uint correctSModelsMethod = (uint)smodelsFixComboBox.SelectedIndex;
+            bool shouldAddCarePackages = addCarePackageCheckbox.Checked;
 
             List<ExportHelper.Map> mapsToDump = new List<ExportHelper.Map>();
             Dictionary<ExportHelper.Map, int> indices = new Dictionary<ExportHelper.Map, int>();
@@ -478,8 +480,9 @@
                             ref paths,
                             shouldCorrectSpeculars,
                             shouldConvertGSC,
+                            shouldAddCarePackages,
                             correctSModelsMethod,
-                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt)); ;
+                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt));
 
                         outputTextBox.Invoke(updateTextBox, this, $"IW3xport program terminated with output {exitCode}");
 

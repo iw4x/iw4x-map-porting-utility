@@ -50,6 +50,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputTabs = new System.Windows.Forms.TabControl();
             this.iw3TabPage = new System.Windows.Forms.TabPage();
+            this.addCarePackageCheckbox = new System.Windows.Forms.CheckBox();
             this.iw3RefreshButton = new System.Windows.Forms.Button();
             this.smodelsFixComboBox = new System.Windows.Forms.ComboBox();
             this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
@@ -245,7 +246,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(205, 216);
+            label1.Location = new System.Drawing.Point(205, 227);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(134, 13);
             label1.TabIndex = 25;
@@ -309,6 +310,7 @@
             // iw3TabPage
             // 
             this.iw3TabPage.BackColor = System.Drawing.Color.Transparent;
+            this.iw3TabPage.Controls.Add(this.addCarePackageCheckbox);
             this.iw3TabPage.Controls.Add(this.iw3RefreshButton);
             this.iw3TabPage.Controls.Add(label1);
             this.iw3TabPage.Controls.Add(this.smodelsFixComboBox);
@@ -329,6 +331,18 @@
             this.iw3TabPage.Text = "Call of Duty 4";
             this.iw3TabPage.UseVisualStyleBackColor = true;
             // 
+            // addCarePackageCheckbox
+            // 
+            this.addCarePackageCheckbox.AutoSize = true;
+            this.addCarePackageCheckbox.Checked = true;
+            this.addCarePackageCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.addCarePackageCheckbox.Location = new System.Drawing.Point(205, 154);
+            this.addCarePackageCheckbox.Name = "addCarePackageCheckbox";
+            this.addCarePackageCheckbox.Size = new System.Drawing.Size(119, 17);
+            this.addCarePackageCheckbox.TabIndex = 26;
+            this.addCarePackageCheckbox.Text = "Add care packages";
+            this.addCarePackageCheckbox.UseVisualStyleBackColor = true;
+            // 
             // iw3RefreshButton
             // 
             this.iw3RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -348,7 +362,7 @@
             "Leave as-is",
             "Delete + move to entities",
             "Swap + move to entities"});
-            this.smodelsFixComboBox.Location = new System.Drawing.Point(205, 232);
+            this.smodelsFixComboBox.Location = new System.Drawing.Point(205, 243);
             this.smodelsFixComboBox.Name = "smodelsFixComboBox";
             this.smodelsFixComboBox.Size = new System.Drawing.Size(148, 21);
             this.smodelsFixComboBox.TabIndex = 24;
@@ -358,7 +372,7 @@
             this.includeGenericSoundsCheckbox.AutoSize = true;
             this.includeGenericSoundsCheckbox.Checked = true;
             this.includeGenericSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(205, 181);
+            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(205, 200);
             this.includeGenericSoundsCheckbox.Name = "includeGenericSoundsCheckbox";
             this.includeGenericSoundsCheckbox.Size = new System.Drawing.Size(136, 17);
             this.includeGenericSoundsCheckbox.TabIndex = 23;
@@ -370,7 +384,7 @@
             this.replaceExistingFilesCheckbox.AutoSize = true;
             this.replaceExistingFilesCheckbox.Checked = true;
             this.replaceExistingFilesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.replaceExistingFilesCheckbox.Location = new System.Drawing.Point(205, 158);
+            this.replaceExistingFilesCheckbox.Location = new System.Drawing.Point(205, 177);
             this.replaceExistingFilesCheckbox.Name = "replaceExistingFilesCheckbox";
             this.replaceExistingFilesCheckbox.Size = new System.Drawing.Size(134, 17);
             this.replaceExistingFilesCheckbox.TabIndex = 22;
@@ -382,7 +396,7 @@
             this.correctSpecularsCheckbox.AutoSize = true;
             this.correctSpecularsCheckbox.Checked = true;
             this.correctSpecularsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.correctSpecularsCheckbox.Location = new System.Drawing.Point(205, 135);
+            this.correctSpecularsCheckbox.Location = new System.Drawing.Point(205, 131);
             this.correctSpecularsCheckbox.Name = "correctSpecularsCheckbox";
             this.correctSpecularsCheckbox.Size = new System.Drawing.Size(108, 17);
             this.correctSpecularsCheckbox.TabIndex = 21;
@@ -394,7 +408,7 @@
             this.convertGscCheckbox.AutoSize = true;
             this.convertGscCheckbox.Checked = true;
             this.convertGscCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.convertGscCheckbox.Location = new System.Drawing.Point(205, 112);
+            this.convertGscCheckbox.Location = new System.Drawing.Point(205, 108);
             this.convertGscCheckbox.Name = "convertGscCheckbox";
             this.convertGscCheckbox.Size = new System.Drawing.Size(93, 17);
             this.convertGscCheckbox.TabIndex = 20;
@@ -406,7 +420,7 @@
             this.generateArenaCheckbox.AutoSize = true;
             this.generateArenaCheckbox.Checked = true;
             this.generateArenaCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.generateArenaCheckbox.Location = new System.Drawing.Point(205, 89);
+            this.generateArenaCheckbox.Location = new System.Drawing.Point(205, 85);
             this.generateArenaCheckbox.Name = "generateArenaCheckbox";
             this.generateArenaCheckbox.Size = new System.Drawing.Size(116, 17);
             this.generateArenaCheckbox.TabIndex = 19;
@@ -418,7 +432,7 @@
             this.generateSourceCheckbox.AutoSize = true;
             this.generateSourceCheckbox.Checked = true;
             this.generateSourceCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.generateSourceCheckbox.Location = new System.Drawing.Point(205, 66);
+            this.generateSourceCheckbox.Location = new System.Drawing.Point(205, 62);
             this.generateSourceCheckbox.Name = "generateSourceCheckbox";
             this.generateSourceCheckbox.Size = new System.Drawing.Size(131, 17);
             this.generateSourceCheckbox.TabIndex = 18;
@@ -601,6 +615,7 @@
         private System.Windows.Forms.Button iw3RefreshButton;
         private System.Windows.Forms.Button iw5RefreshButton;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.CheckBox addCarePackageCheckbox;
     }
 }
 

@@ -112,21 +112,28 @@
 
             using (var zipFile = ZipFile.Open(iwdPath, ZipArchiveMode.Create, Encoding.UTF8)) {
                 if (Directory.Exists(dataPath)) {
-                    var imageFiles = Directory.GetFiles(Path.Combine(dataPath, "images"));
-                    foreach(var file in imageFiles) {
-                        string entry = file.Substring(dataPath.Length+1);
 
-                        if (entry.EndsWith(".iwi")) {
-                            pipe.Invoke($"Adding {entry}");
-                            zipFile.CreateEntryFromFile(file, entry);
+                    var imagesFolder = Path.Combine(dataPath, "images");
+                    if (Directory.Exists(imagesFolder)) {
+                        var imageFiles = Directory.GetFiles(imagesFolder);
+                        foreach (var file in imageFiles) {
+                            string entry = file.Substring(dataPath.Length + 1);
+
+                            if (entry.EndsWith(".iwi")) {
+                                pipe.Invoke($"Adding {entry}");
+                                zipFile.CreateEntryFromFile(file, entry);
+                            }
                         }
                     }
 
-                    var soundFiles = Directory.GetFiles(Path.Combine(dataPath, "sound"), "*.*", SearchOption.AllDirectories);
-                    foreach (var file in soundFiles) {
-                        string entry = file.Substring(dataPath.Length+1);
-                        pipe.Invoke($"Adding {entry}");
-                        zipFile.CreateEntryFromFile(file, entry);
+                    var soundFolder = Path.Combine(dataPath, "sound");
+                    if (Directory.Exists(soundFolder)) {
+                        var soundFiles = Directory.GetFiles(soundFolder, "*.*", SearchOption.AllDirectories);
+                        foreach (var file in soundFiles) {
+                            string entry = file.Substring(dataPath.Length + 1);
+                            pipe.Invoke($"Adding {entry}");
+                            zipFile.CreateEntryFromFile(file, entry);
+                        }
                     }
                 }
             }
