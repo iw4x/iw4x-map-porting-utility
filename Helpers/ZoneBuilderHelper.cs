@@ -160,7 +160,9 @@
                 UseShellExecute = false
             };
 
-            info.Environment.Add("PATH", $"{Environment.GetEnvironmentVariable("PATH")};{Path.GetDirectoryName(paths.AppDataIW4xLibraryPath)}");
+            if (paths.HasXLabsInstalled()) {
+                info.Environment.Add("PATH", $"{Environment.GetEnvironmentVariable("PATH")};{Path.GetDirectoryName(paths.AppDataIW4xLibraryPath)}");
+            }
 
             var proc = new Process { StartInfo = info };
             proc.Start();
@@ -250,7 +252,9 @@
                 RedirectStandardError = true
             };
 
-            info.Environment.Add("PATH", $"{Environment.GetEnvironmentVariable("PATH")};{Path.GetDirectoryName(paths.AppDataIW4xLibraryPath)}");
+            if (paths.HasXLabsInstalled()) {
+                info.Environment.Add("PATH", $"{Environment.GetEnvironmentVariable("PATH")};{Path.GetDirectoryName(paths.AppDataIW4xLibraryPath)}");
+            }
 
             var proc = new Process { StartInfo = info };
             pipe($"{exePath} {proc.StartInfo.Arguments}");
