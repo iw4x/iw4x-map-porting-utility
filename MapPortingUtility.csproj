@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -417,6 +432,22 @@
     <None Include="static\generic_sounds\sounds\ui_pulse_text_type.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="static\team_source\iw4x_team_delta_multicam.csv" />
+    <None Include="static\team_source\iw4x_team_gign_paris.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_opfor_desert.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_sas_urban.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_sas_woodland.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_spetsnaz_urban.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_spetsnaz_woodland.csv" />
+    <None Include="static\team_source\iw4x_team_iw3_usmc_desert.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_africa.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_air.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_henchmen.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_snow.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_urban.csv" />
+    <None Include="static\team_source\iw4x_team_opforce_woodland.csv" />
+    <None Include="static\team_source\iw4x_team_pmc_africa.csv" />
+    <None Include="static\team_source\iw4x_team_sas_urban.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -424,6 +455,17 @@
   <ItemGroup>
     <None Include="Resources\cardicon_porterjustice.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
