@@ -181,6 +181,14 @@
             string backupPath = $"{sourcePath}.backup";
             string arenaPath = GetArenaFilePath(mapName, ref paths);
 
+            string destinationPath = GetZoneDestinationPath(mapName, ref paths);
+
+            if (!Directory.Exists(destinationPath)) {
+                // Should never happen unless the user has fiddled with files
+                // Prevens a nasty error so, better safe than sorry
+                Directory.CreateDirectory(destinationPath); 
+            }
+
             if (withTeams) {
                 // We need to generate a new zone source and delete it at the end
 
@@ -304,7 +312,7 @@
 
                 foreach(var file in filesToMove) {
                     if (File.Exists(file)) {
-                        string destination = Path.Combine(GetZoneDestinationPath(mapName, ref paths), Path.GetFileName(file));
+                        string destination = Path.Combine(destinationPath, Path.GetFileName(file));
                         if (File.Exists(destination)) {
                             File.Delete(destination);
                         }
