@@ -91,7 +91,7 @@
                 StartInfo = new ProcessStartInfo {
                     FileName = exePath,
                     WorkingDirectory = paths.IW3Path,
-                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(correctSpeculars ? 1 : 0)} +set iw3x_smodels_fix_method {correctSmodelsMethod} +set iw3x_add_care_packages {(addCarePackages ? 1 : 0)} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
+                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(convertGSCs ? 1 : 0)} +set iw3x_smodels_fix_method {correctSmodelsMethod} +set iw3x_add_care_packages {(addCarePackages ? 1 : 0)} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
