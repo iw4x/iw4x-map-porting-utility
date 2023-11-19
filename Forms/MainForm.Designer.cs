@@ -67,6 +67,12 @@
             this.iw5OverwriteSource = new System.Windows.Forms.CheckBox();
             this.iw5ExportButton = new System.Windows.Forms.Button();
             this.iw5MapListBox = new System.Windows.Forms.CheckedListBox();
+            this.t5TabPage = new System.Windows.Forms.TabPage();
+            this.t5RefreshButton = new System.Windows.Forms.Button();
+            this.t5GenerateArena = new System.Windows.Forms.CheckBox();
+            this.t5OverwriteSource = new System.Windows.Forms.CheckBox();
+            this.t5ExportButton = new System.Windows.Forms.Button();
+            this.t5MapListBox = new System.Windows.Forms.CheckedListBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             zonebuilderGroupBox = new System.Windows.Forms.GroupBox();
             outputBoxGroup = new System.Windows.Forms.GroupBox();
@@ -77,6 +83,7 @@
             this.inputTabs.SuspendLayout();
             this.iw3TabPage.SuspendLayout();
             this.iw5TabPage.SuspendLayout();
+            this.t5TabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // zonebuilderGroupBox
@@ -299,6 +306,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.inputTabs.Controls.Add(this.iw3TabPage);
             this.inputTabs.Controls.Add(this.iw5TabPage);
+            this.inputTabs.Controls.Add(this.t5TabPage);
             this.inputTabs.ImageList = this.imageList1;
             this.inputTabs.Location = new System.Drawing.Point(12, 27);
             this.inputTabs.Name = "inputTabs";
@@ -541,12 +549,90 @@
             this.iw5MapListBox.TabIndex = 20;
             this.iw5MapListBox.ThreeDCheckBoxes = true;
             // 
+            // t5TabPage
+            // 
+            this.t5TabPage.BackColor = System.Drawing.Color.Transparent;
+            this.t5TabPage.Controls.Add(this.t5RefreshButton);
+            this.t5TabPage.Controls.Add(this.t5GenerateArena);
+            this.t5TabPage.Controls.Add(this.t5OverwriteSource);
+            this.t5TabPage.Controls.Add(this.t5ExportButton);
+            this.t5TabPage.Controls.Add(this.t5MapListBox);
+            this.t5TabPage.ImageKey = "t5_icon.png";
+            this.t5TabPage.Location = new System.Drawing.Point(4, 31);
+            this.t5TabPage.Name = "t5TabPage";
+            this.t5TabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.t5TabPage.Size = new System.Drawing.Size(359, 270);
+            this.t5TabPage.TabIndex = 3;
+            this.t5TabPage.Text = "Black Ops";
+            this.t5TabPage.UseVisualStyleBackColor = true;
+            // 
+            // t5RefreshButton
+            // 
+            this.t5RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.t5RefreshButton.Location = new System.Drawing.Point(176, 6);
+            this.t5RefreshButton.Name = "t5RefreshButton";
+            this.t5RefreshButton.Size = new System.Drawing.Size(24, 24);
+            this.t5RefreshButton.TabIndex = 24;
+            this.t5RefreshButton.Text = "🔄";
+            this.t5RefreshButton.UseVisualStyleBackColor = true;
+            this.t5RefreshButton.Click += new System.EventHandler(this.t5RefreshButton_Click);
+            // 
+            // t5GenerateArena
+            // 
+            this.t5GenerateArena.AutoSize = true;
+            this.t5GenerateArena.Checked = true;
+            this.t5GenerateArena.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.t5GenerateArena.Location = new System.Drawing.Point(205, 89);
+            this.t5GenerateArena.Name = "t5GenerateArena";
+            this.t5GenerateArena.Size = new System.Drawing.Size(116, 17);
+            this.t5GenerateArena.TabIndex = 23;
+            this.t5GenerateArena.Text = "Generate arena file";
+            this.t5GenerateArena.UseVisualStyleBackColor = true;
+            // 
+            // t5OverwriteSource
+            // 
+            this.t5OverwriteSource.AutoSize = true;
+            this.t5OverwriteSource.Checked = true;
+            this.t5OverwriteSource.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.t5OverwriteSource.Location = new System.Drawing.Point(205, 66);
+            this.t5OverwriteSource.Name = "t5OverwriteSource";
+            this.t5OverwriteSource.Size = new System.Drawing.Size(132, 17);
+            this.t5OverwriteSource.TabIndex = 22;
+            this.t5OverwriteSource.Text = "Overwrite zone source";
+            this.t5OverwriteSource.UseVisualStyleBackColor = true;
+            // 
+            // t5ExportButton
+            // 
+            this.t5ExportButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.t5ExportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.t5ExportButton.Location = new System.Drawing.Point(205, 6);
+            this.t5ExportButton.Name = "t5ExportButton";
+            this.t5ExportButton.Size = new System.Drawing.Size(148, 50);
+            this.t5ExportButton.TabIndex = 21;
+            this.t5ExportButton.Text = "Export and prepare >>";
+            this.t5ExportButton.UseVisualStyleBackColor = true;
+            this.t5ExportButton.Click += t5ExportButton_Click;
+            // 
+            // t5MapListBox
+            // 
+            this.t5MapListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.t5MapListBox.CheckOnClick = true;
+            this.t5MapListBox.FormattingEnabled = true;
+            this.t5MapListBox.Location = new System.Drawing.Point(6, 6);
+            this.t5MapListBox.Name = "t5MapListBox";
+            this.t5MapListBox.Size = new System.Drawing.Size(194, 259);
+            this.t5MapListBox.TabIndex = 20;
+            this.t5MapListBox.ThreeDCheckBoxes = true;
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "cod4_icon.png");
             this.imageList1.Images.SetKeyName(1, "mw3_icon.png");
+            this.imageList1.Images.SetKeyName(2, "t5_icon.png");
             // 
             // MainForm
             // 
@@ -574,6 +660,8 @@
             this.iw3TabPage.PerformLayout();
             this.iw5TabPage.ResumeLayout(false);
             this.iw5TabPage.PerformLayout();
+            this.t5TabPage.ResumeLayout(false);
+            this.t5TabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -616,6 +704,12 @@
         private System.Windows.Forms.Button iw5RefreshButton;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckBox addCarePackageCheckbox;
+        private System.Windows.Forms.TabPage t5TabPage;
+        private System.Windows.Forms.Button t5RefreshButton;
+        private System.Windows.Forms.CheckBox t5GenerateArena;
+        private System.Windows.Forms.CheckBox t5OverwriteSource;
+        private System.Windows.Forms.Button t5ExportButton;
+        private System.Windows.Forms.CheckedListBox t5MapListBox;
     }
 }
 

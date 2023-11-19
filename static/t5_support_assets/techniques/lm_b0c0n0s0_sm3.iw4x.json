@@ -1,0 +1,86 @@
+{
+    "version": 1,
+    "name": "lm_b0c0n0s0_sm3",
+    "flags": "0000000000000000",
+    "passArray": [
+        {
+            "vertexDeclaration": "ppcc0t0t0nntt2",
+            "vertexShader": "lm_fog_s_tc0n0_sm3.hlsl",
+            "pixelShader": "lm_fog_b0c0n0s0_sm3.hlsl",
+            "perPrimArgCount": 1,
+            "perObjArgCount": 1,
+            "stableArgCount": 6,
+            "customSamplerFlags": 5,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 4,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_MATRIX0",
+                        "index": 98,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_VIEW_PROJECTION_MATRIX",
+                        "index": 86,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 5,
+                    "nameHash": 887934131
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 4,
+                    "nameHash": 1507003663
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 0,
+                    "nameHash": 2695565377
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 21,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_FOG",
+                        "index": 37,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_FOG_COLOR_LINEAR",
+                        "index": 38,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 6,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_CONST = 0x6",
+                    "dest": 3,
+                    "nameHash": 1033475292
+                }
+            ]
+        }
+    ]
+}

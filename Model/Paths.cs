@@ -16,6 +16,8 @@
 
         public string IW5Path { get; set; }
 
+        public string T5Path { get; set; }
+
         public string AppDataIW4xLibraryPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "xlabs", "data", "iw4x", "iw4x.dll"
@@ -33,7 +35,11 @@
             "main", "zone", "open-iw5.exe", "mss32.dll", "binkw32.dll"
         };
 
-        public bool IsValid => IsIW4PathGood(out _) && (IsIW3PathGood(out _) || IsIW5PathGood(out _));
+        private static readonly string[] mandatoryT5Files = new string[] {
+            "main", "zone", "t5x-port.exe", "BlackOpsMP.exe", "binkw32.dll"
+        };
+
+        public bool IsValid => IsIW4PathGood(out _) && (IsIW3PathGood(out _) || IsIW5PathGood(out _) || IsT5PathGood(out _));
 
         public bool HasXLabsInstalled()
         {
@@ -113,6 +119,25 @@
 
             return true;
         }
+        public bool IsT5PathGood(out string error)
+        {
+            error = string.Empty;
+
+            if (!Directory.Exists(T5Path)) {
+                error = "No such file or directory!";
+                return false;
+            }
+
+            for (int i = 0; i < mandatoryT5Files.Length; i++) {
+                string path = Path.Combine(T5Path, mandatoryT5Files[i]);
+                if (!File.Exists(path) && !Directory.Exists(path)) {
+                    error = $"Missing critical file/directory {path}";
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         public bool TryDetectIW5Path()
         {
@@ -135,6 +160,24 @@
             return false;
         }
 
+        public bool TryDetectT5Path()
+        {
+            string[] candidates = {
+                @"C:\Program Files\Steam\steamapps\common\Call of Duty Black Ops",
+                @"C:\Program Files (x86)\Activision\Call of Duty Black Ops",
+                @"D:\Games\Call of Duty Black Ops",
+            };
+
+            for (int i = 0; i < candidates.Length; i++) {
+                T5Path = candidates[i];
+                if (IsT5PathGood(out _)) {
+                    return true;
+                }
+            }
+
+            T5Path = string.Empty;
+            return false;
+        }
 
         public bool TryDetectIW3Path()
         {

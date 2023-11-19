@@ -1,0 +1,206 @@
+{
+    "version": 1,
+    "name": "lp_sm_spot_r0c0n0s0_dtex_sm3",
+    "flags": "0000000001000000",
+    "passArray": [
+        {
+            "vertexDeclaration": "ppcc0t0t0nntt2",
+            "vertexShader": "lp_sm_omni_fog_s_tc0n0_dtex_sm3.hlsl",
+            "pixelShader": "lp_sm_spot_fog_r0c0n0s0_sm3.hlsl",
+            "perPrimArgCount": 2,
+            "perObjArgCount": 3,
+            "stableArgCount": 15,
+            "customSamplerFlags": 1,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 4,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_MATRIX0",
+                        "index": 98,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 8,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_BASE_LIGHTING_COORDS",
+                        "index": 58,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_VIEW_PROJECTION_MATRIX",
+                        "index": 86,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 24,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_SHADOW_LOOKUP_MATRIX",
+                        "index": 90,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 4,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_SAMPLER = 0x4",
+                    "dest": 8,
+                    "codeSampler_debug": "TEXTURE_SRC_CODE_LIGHT_ATTENUATION",
+                    "codeSampler": 13
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 7,
+                    "nameHash": 887934131
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 6,
+                    "nameHash": 1507003663
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 0,
+                    "nameHash": 2695565377
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 21,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_FOG",
+                        "index": 37,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 4,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_SAMPLER = 0x4",
+                    "dest": 4,
+                    "codeSampler_debug": "TEXTURE_SRC_CODE_MODEL_LIGHTING",
+                    "codeSampler": 3
+                },
+                {
+                    "type": 4,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_SAMPLER = 0x4",
+                    "dest": 5,
+                    "codeSampler_debug": "TEXTURE_SRC_CODE_SHADOWMAP_SPOT",
+                    "codeSampler": 7
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_FOG_COLOR_LINEAR",
+                        "index": 38,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 3,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHTING_LOOKUP_SCALE",
+                        "index": 34,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 5,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHT_SPOTDIR",
+                        "index": 3,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 6,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHT_SPOTFACTORS",
+                        "index": 4,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 7,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_SPOT_SHADOWMAP_PIXEL_ADJUST",
+                        "index": 53,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 17,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHT_POSITION",
+                        "index": 0,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 18,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHT_DIFFUSE",
+                        "index": 1,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 19,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_LIGHT_SPECULAR",
+                        "index": 2,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                },
+                {
+                    "type": 6,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_CONST = 0x6",
+                    "dest": 8,
+                    "nameHash": 1033475292
+                }
+            ]
+        }
+    ]
+}

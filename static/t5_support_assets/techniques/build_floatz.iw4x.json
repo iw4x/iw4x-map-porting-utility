@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "name": "build_floatz",
+    "flags": "0000001000001000",
+    "passArray": [
+        {
+            "vertexDeclaration": "pp",
+            "vertexShader": "floatz_build.hlsl",
+            "pixelShader": "floatz_build.hlsl",
+            "perPrimArgCount": 1,
+            "perObjArgCount": 2,
+            "stableArgCount": 0,
+            "customSamplerFlags": 0,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 4,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_MATRIX0",
+                        "index": 98,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_VIEW_PROJECTION_MATRIX",
+                        "index": 86,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 23,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_DEPTH_FROM_CLIP",
+                        "index": 73,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

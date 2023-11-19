@@ -26,7 +26,7 @@
 
         protected static readonly string[] CANONICAL_LANGUAGES = new string[]
         {
-            "english","french","german","spanish","japanese","russian","italian","dlc"
+            "english","french","german","spanish","japanese","russian","italian","dlc","Common"
         };
 
         protected const string MAP_PREFIX_FILTER = "mp_";

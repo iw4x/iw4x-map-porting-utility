@@ -1,5 +1,4 @@
-﻿namespace MapPortingUtility
-{
+﻿namespace MapPortingUtility {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -10,8 +9,7 @@
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    public partial class SetPathsForm : Form
-    {
+    public partial class SetPathsForm : Form {
         public Paths ComputedPath => computedPath;
 
         public Paths computedPath;
@@ -32,31 +30,46 @@
                 computedPath.TryDetectIW4Path();
             }
 
-            if (!computedPath.IsIW5PathGood(out _))
-            {
+            if (!computedPath.IsIW5PathGood(out _)) {
                 computedPath.TryDetectIW5Path();
+            }
+
+            if (!computedPath.IsT5PathGood(out _)) {
+                computedPath.TryDetectT5Path();
             }
 
             iw3PathTextBox.Text = computedPath.IW3Path;
             iw4PathTextBox.Text = computedPath.IW4Path;
             iw5PathTextBox.Text = computedPath.IW5Path;
+            t5PathTextBox.Text = computedPath.T5Path;
 
             iw3PathTextBox.TextChanged += Iw3PathTextBox_TextChanged;
             iw4PathTextBox.TextChanged += Iw4PathTextBox_TextChanged;
             iw5PathTextBox.TextChanged += Iw5PathTextBox_TextChanged;
+            t5PathTextBox.TextChanged += T5PathTextBox_TextChanged; ;
 
+        }
+
+        private void T5PathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            computedPath.T5Path = t5PathTextBox.Text.Trim();
+
+            if (computedPath.IsT5PathGood(out string error)) {
+                okButton.Enabled = computedPath.IsValid;
+            }
+            else {
+                MessageBox.Show(error, "Invalid path", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Iw5PathTextBox_TextChanged(object sender, EventArgs e)
         {
             computedPath.IW5Path = iw5PathTextBox.Text.Trim();
 
-            if (computedPath.IsIW5PathGood(out string error))
-            {
+            if (computedPath.IsIW5PathGood(out string error)) {
                 okButton.Enabled = computedPath.IsValid;
             }
-            else
-            {
+            else {
                 MessageBox.Show(error, "Invalid path", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -64,7 +77,7 @@
         private void Iw4PathTextBox_TextChanged(object sender, EventArgs e)
         {
             computedPath.IW4Path = iw4PathTextBox.Text.Trim();
-            
+
             if (computedPath.IsIW4PathGood(out string error)) {
                 okButton.Enabled = computedPath.IsValid;
             }
@@ -115,9 +128,16 @@
         private void browseIW5Button_Click(object sender, EventArgs e)
         {
             var openDialog = new FolderBrowserDialog();
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
+            if (openDialog.ShowDialog() == DialogResult.OK) {
                 iw5PathTextBox.Text = openDialog.SelectedPath;
+            }
+        }
+
+        private void browseT5Button_Click(object sender, EventArgs e)
+        {
+            var openDialog = new FolderBrowserDialog();
+            if (openDialog.ShowDialog() == DialogResult.OK) {
+                t5PathTextBox.Text = openDialog.SelectedPath;
             }
         }
     }

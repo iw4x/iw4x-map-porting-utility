@@ -41,11 +41,15 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.browseIW5Button = new System.Windows.Forms.Button();
             this.iw5PathTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.browseT5Button = new System.Windows.Forms.Button();
+            this.t5PathTextBox = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -115,7 +119,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(86, 244);
+            this.okButton.Location = new System.Drawing.Point(80, 299);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(386, 23);
             this.okButton.TabIndex = 3;
@@ -125,7 +129,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(9, 244);
+            this.cancelButton.Location = new System.Drawing.Point(3, 299);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(71, 23);
             this.cancelButton.TabIndex = 4;
@@ -170,12 +174,41 @@
             this.iw5PathTextBox.Size = new System.Drawing.Size(376, 20);
             this.iw5PathTextBox.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.browseT5Button);
+            this.groupBox4.Controls.Add(this.t5PathTextBox);
+            this.groupBox4.Location = new System.Drawing.Point(3, 244);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(469, 49);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Black Ops installation folder";
+            // 
+            // browseT5Button
+            // 
+            this.browseT5Button.Location = new System.Drawing.Point(388, 19);
+            this.browseT5Button.Name = "browseT5Button";
+            this.browseT5Button.Size = new System.Drawing.Size(75, 23);
+            this.browseT5Button.TabIndex = 1;
+            this.browseT5Button.Text = "Browse...";
+            this.browseT5Button.UseVisualStyleBackColor = true;
+            this.browseT5Button.Click += new System.EventHandler(this.browseT5Button_Click);
+            // 
+            // t5PathTextBox
+            // 
+            this.t5PathTextBox.Location = new System.Drawing.Point(6, 19);
+            this.t5PathTextBox.Name = "t5PathTextBox";
+            this.t5PathTextBox.Size = new System.Drawing.Size(376, 20);
+            this.t5PathTextBox.TabIndex = 0;
+            // 
             // SetPathsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 273);
+            this.ClientSize = new System.Drawing.Size(479, 329);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(label1);
             this.Controls.Add(this.pictureBox1);
@@ -192,6 +225,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,5 +245,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button browseIW5Button;
         private System.Windows.Forms.TextBox iw5PathTextBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button browseT5Button;
+        private System.Windows.Forms.TextBox t5PathTextBox;
     }
 }

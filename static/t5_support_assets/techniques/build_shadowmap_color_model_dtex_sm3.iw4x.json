@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "name": "build_shadowmap_color_model_dtex_sm3",
+    "flags": "0000000000000000",
+    "passArray": [
+        {
+            "vertexDeclaration": "pp",
+            "vertexShader": "shadowmap_build.hlsl",
+            "pixelShader": "shadowmap_build_sm3.hlsl",
+            "perPrimArgCount": 1,
+            "perObjArgCount": 0,
+            "stableArgCount": 1,
+            "customSamplerFlags": 0,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_VIEW_PROJECTION_MATRIX0",
+                        "index": 106,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 2,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_SHADOWMAP_POLYGON_OFFSET",
+                        "index": 21,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

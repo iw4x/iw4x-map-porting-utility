@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "name": "debug_bumpmap_dtex",
+    "flags": "0000000000000000",
+    "passArray": [
+        {
+            "vertexDeclaration": "ppt0t0nntt1",
+            "vertexShader": "debug_normals_dtex.hlsl",
+            "pixelShader": "debug_normals.hlsl",
+            "perPrimArgCount": 1,
+            "perObjArgCount": 1,
+            "stableArgCount": 2,
+            "customSamplerFlags": 0,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 4,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_MATRIX0",
+                        "index": 98,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_VIEW_PROJECTION_MATRIX",
+                        "index": 86,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                },
+                {
+                    "type": 2,
+                    "type_debug": "MTL_ARG_MATERIAL_PIXEL_SAMPLER",
+                    "dest": 4,
+                    "nameHash": 1507003663
+                },
+                {
+                    "type": 5,
+                    "type_debug": "MTL_ARG_CODE_PIXEL_CONST = 0x5",
+                    "dest": 3,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_DEBUG_BUMPMAP",
+                        "index": 35,
+                        "firstRow": 0,
+                        "rowCount": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

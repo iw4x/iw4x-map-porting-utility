@@ -24,6 +24,7 @@
         {
             InitializeComponent();
             iw3MapListBox.ItemCheck += Iw3MapListBox_ItemCheck;
+            t5MapListBox.ItemCheck += T5MapListBox_ItemCheck; ;
             iw5MapListBox.ItemCheck += Iw5MapListBox_ItemCheck;
             iw4ZoneListBox.ItemCheck += Iw4ZoneListBox_ItemCheck;
             outputTextBox.Text = string.Empty;
@@ -34,6 +35,12 @@
             RefreshIW4Buttons();
             RefreshIW3Buttons();
             RefreshIW5Buttons();
+            RefreshT5Buttons();
+        }
+
+        private void T5MapListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)RefreshT5Buttons);
         }
 
         private void Iw5MapListBox_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -49,6 +56,11 @@
         private void Iw3MapListBox_ItemCheck(object _a, ItemCheckEventArgs _b)
         {
             this.BeginInvoke((MethodInvoker)RefreshIW3Buttons);
+        }
+
+        private void RefreshT5Buttons()
+        {
+            t5ExportButton.Enabled = t5MapListBox.CheckedItems.Count > 0;
         }
 
         private void RefreshIW5Buttons()
@@ -89,6 +101,7 @@
             if (paths.IsValid) {
                 RefreshIW3();
                 RefreshIW5();
+                RefreshT5();
                 RefreshZoneSourcesList();
                 RefreshIW4Buttons();
             }
@@ -109,6 +122,18 @@
             }
         }
 
+        private void RefreshT5()
+        {
+            bool t5PathIsGood = paths.IsT5PathGood(out _);
+
+            (t5TabPage as Control).Enabled = t5PathIsGood;
+
+            if (t5PathIsGood) {
+                RefreshT5MapList();
+                RefreshT5Buttons();
+            }
+        }
+
         private void RefreshIW3()
         {
             bool iw3PathIsGood = paths.IsIW3PathGood(out _);
@@ -120,6 +145,26 @@
                 RefreshIW3Buttons();
             }
         }
+
+        private void RefreshT5MapList()
+        {
+            var maps = T5xportHelper.GetMapList(ref paths);
+
+            t5MapListBox.SuspendLayout();
+
+            t5MapListBox.Items.Clear();
+
+            for (int i = 0; i < System.Enum.GetValues(typeof(ExportHelper.Map.ECategory)).Length; i++) {
+                foreach (var map in maps) {
+                    if (map.Category == (ExportHelper.Map.ECategory)i) {
+                        t5MapListBox.Items.Add(map, false);
+                    }
+                }
+            }
+
+            t5MapListBox.ResumeLayout();
+        }
+
 
         private void RefreshIW5MapList()
         {
@@ -179,6 +224,10 @@
             RefreshIW3();
         }
 
+        private void t5RefreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshT5();
+        }
 
         private void iw5RefreshButton_Click(object sender, EventArgs e)
         {
@@ -198,6 +247,7 @@
             if (paths.IsValid) {
                 RefreshIW3();
                 RefreshIW5();
+                RefreshT5();
                 RefreshZoneSourcesList();
                 RefreshIW4Buttons();
             }
@@ -646,6 +696,130 @@
 
                     RefreshZoneSourcesList();
                     RefreshIW5Buttons();
+
+                    if (!hadError) {
+                        // Check maps we ported successfully
+                        for (int j = 0; j < iw4ZoneListBox.Items.Count; j++) {
+                            string sourceName = System.IO.Path.GetFileNameWithoutExtension(iw4ZoneListBox.Items[j].ToString()).ToUpper();
+
+                            if (successfullyDumpedMaps.Find(o => o.ToUpper() == sourceName) != null) {
+                                iw4ZoneListBox.SetItemChecked(j, true);
+                            }
+                            else {
+                                iw4ZoneListBox.SetItemChecked(j, false);
+                            }
+                        }
+                    }
+
+                    Enabled = true;
+                };
+
+                Invoke(postExport);
+            });
+        }
+
+
+        private void t5ExportButton_Click(object sender, EventArgs e)
+        {
+            outputTextBox.Clear();
+
+            Enabled = false;
+
+            bool shouldWriteSource = t5OverwriteSource.Checked;
+            bool shouldWriteArena = t5GenerateArena.Checked;
+
+            List<ExportHelper.Map> mapsToDump = new List<ExportHelper.Map>();
+            Dictionary<ExportHelper.Map, int> indices = new Dictionary<ExportHelper.Map, int>();
+            List<string> successfullyDumpedMaps = new List<string>();
+
+            int i = 0;
+            foreach (var item in t5MapListBox.CheckedItems) {
+                if (item is ExportHelper.Map map) {
+                    mapsToDump.Add(map);
+                    indices.Add(map, i++);
+                }
+            }
+
+            bool hadError = false;
+
+            Task.Run(() =>
+            {
+                foreach (var map in mapsToDump) {
+                    var mapCpy = map;
+                    Action untick = () =>
+                    {
+                        t5MapListBox.SetItemChecked(indices[mapCpy], false);
+                        RefreshZoneSourcesList();
+                    };
+
+                    try {
+                        int exitCode = T5xportHelper.DumpMap(
+                            map,
+                            ref paths,
+                            (txt) => outputTextBox.Invoke(updateTextBox, this, txt));
+
+                        outputTextBox.Invoke(updateTextBox, this, $"T5xport program terminated with output {exitCode}");
+
+                        if (exitCode == 0) {
+
+                            bool success = T5xportHelper.RegenerateMaterials(map, ref paths, (txt) => outputTextBox.Invoke(updateTextBox, this, txt));
+
+                            if (!success) {
+                                hadError = true;
+                                break;
+                            }
+
+                            // All good!
+                            t5MapListBox.Invoke(untick);
+
+                            if (shouldWriteSource) {
+                                var outputDestination = ExportHelper.GetDumpDestinationPath(ref mapCpy, ref paths);
+
+                                foreach (var suffix in new string[] { ".csv", "_load.csv" }) {
+                                    string file = $"{System.IO.Path.Combine(outputDestination, map.Name)}{suffix}";
+
+                                    if (System.IO.File.Exists(file)) {
+                                        System.IO.File.Copy(
+                                            file,
+                                            System.IO.Path.Combine(ZoneBuilderHelper.GetSourceFolderPath(ref paths), System.IO.Path.GetFileName(file)),
+                                            overwrite: true
+                                        );
+                                    }
+
+                                    outputTextBox.Invoke(updateTextBox, this, $"Copied source file {map.Name}{suffix} for {map.Name}");
+                                }
+                            }
+
+                            if (shouldWriteArena) {
+                                ZoneBuilderHelper.WriteArena(map.Name, ref paths);
+                                outputTextBox.Invoke(updateTextBox, this, $"Generated arenafile for {map.Name}");
+                            }
+
+                            successfullyDumpedMaps.Add(map.Name);
+                        }
+                        else {
+                            hadError = true;
+                            break;
+                        }
+                    }
+                    catch (Exception ex) {
+                        hadError = true;
+                        outputTextBox.Invoke(updateTextBox, this, ex.ToString());
+                        break;
+                    }
+                }
+
+                Action postExport = () =>
+                {
+                    if (hadError) {
+                        MessageBox.Show($"An error occured while exporting the map (check the console). Exporting was interrupted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else {
+                        outputTextBox.AppendText($"Export successful! {Environment.NewLine}");
+                    }
+
+                    RefreshZoneSourcesList();
+                    RefreshT5Buttons();
 
                     if (!hadError) {
                         // Check maps we ported successfully

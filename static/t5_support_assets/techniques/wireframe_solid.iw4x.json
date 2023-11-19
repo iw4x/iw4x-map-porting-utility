@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "name": "wireframe_solid",
+    "flags": "0000001000000000",
+    "passArray": [
+        {
+            "vertexDeclaration": "ppcc0",
+            "vertexShader": "vertcol_untextured_nofog.hlsl",
+            "pixelShader": "vertcol_untextured_lin_nofog.hlsl",
+            "perPrimArgCount": 1,
+            "perObjArgCount": 0,
+            "stableArgCount": 0,
+            "customSamplerFlags": 0,
+            "arguments": [
+                {
+                    "type": 3,
+                    "type_debug": "MTL_ARG_CODE_VERTEX_CONST = 0x3",
+                    "dest": 0,
+                    "codeConst": {
+                        "index_debug": "CONST_SRC_CODE_TRANSPOSE_WORLD_VIEW_PROJECTION_MATRIX0",
+                        "index": 106,
+                        "firstRow": 0,
+                        "rowCount": 4
+                    }
+                }
+            ]
+        }
+    ]
+}
