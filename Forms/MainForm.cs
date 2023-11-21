@@ -297,7 +297,7 @@
 
         private void getHelpOnlineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://discord.gg/tKTQJxcCkk");
+            System.Diagnostics.Process.Start("https://discord.gg/2ETE8engZM");
         }
 
         private void runMapButton_Click(object sender, EventArgs e)

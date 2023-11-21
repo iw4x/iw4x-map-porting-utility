@@ -232,10 +232,13 @@ weapon,turret_minigun_mp
         {
             string materialPath = Path.Combine(MapDataPath, "materials");
 
-            additionalFiles.Add(
-                new AdditionalFile(Path.Combine(materialPath, "$levelbriefing.iw4x.json"),
-                Resources.loadMaterialTemplate.Replace("MAPNAME", MapName))
-            );
+            if (!File.Exists(materialPath))
+            {
+                additionalFiles.Add(
+                    new AdditionalFile(Path.Combine(materialPath, "$levelbriefing.iw4x.json"),
+                    Resources.loadMaterialTemplate.Replace("MAPNAME", MapName))
+                );
+            }
         }
 
         private void GenerateMissingGSCs()
