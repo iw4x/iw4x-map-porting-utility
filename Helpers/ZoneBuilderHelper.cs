@@ -153,6 +153,10 @@
                         "-console",
                         "-nointro",
                         "-nosteam",
+                        "+set scr_game_playerwaittime 0",
+                        "+set scr_game_matchstarttime 0",
+                        "+set developer 2",
+                        "+set developer_script 1",
                         $"+set fs_game mods/{mapName}",
                         $"+devmap {mapName}"
                     }

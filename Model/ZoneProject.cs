@@ -325,8 +325,9 @@ main()
         {
             string root = Path.Combine(MapDataPath, "fx");
             if (Directory.Exists(root)) {
-
-                var files = Directory.EnumerateFiles(root, "*.iw4xFX", SearchOption.AllDirectories);
+                List<string> files = new List<string>();
+                files.AddRange(Directory.EnumerateFiles(root, "*.iw4xFX", SearchOption.AllDirectories));
+                files.AddRange(Directory.EnumerateFiles(root, "*.iw4x.json", SearchOption.AllDirectories).Select(o=>o.Replace(".iw4x.json", ".iw4xFX")));
                 return files.ToArray();
             }
             else {
