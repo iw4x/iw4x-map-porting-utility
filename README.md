@@ -9,7 +9,7 @@ It should be simple to use and allow the average user to port maps from IW3 to I
 - Call Of Duty 4 (1.7) in any language
 - [Latest version of IW3x.dll + IW3xport.exe](https://github.com/iw4x/iw3x-port/releases/latest) dropped in the Call Of Duty 4 game folder
 - Call Of Duty: Modern Warfare 2 (Any version compatible with IW4x)
-- Latest version of IW4x as obtained through the [XLabs Launcher](https://github.com/iw4x/launcher)
+- Latest version of IW4x as obtained through the [IW4x releases](https://github.com/iw4x/iw4x-client/releases/latest)
 
 ## Usage
 While providing a lot of room for customization with a ton of checkboxes and a dropdown menu, it is important to note that **the default options should work best for most users**.
