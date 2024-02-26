@@ -49,6 +49,8 @@
         {
             StringBuilder sourceBuilder = new StringBuilder();
 
+            bool isMultiplayer = MapName.StartsWith("mp_");
+
             if (HasMinigun) {
                 sourceBuilder.AppendLine("require,zonebuilder_minigun");
             }
@@ -70,11 +72,11 @@ rawfile,maps/createart/{MapName}_art.gsc
 # {DateTime.Now.ToLongDateString()} {DateTime.Now.ToLongTimeString()}
 ########################
 
-col_map_mp,maps/mp/{MapName}.d3dbsp
-fx_map,maps/mp/{MapName}.d3dbsp
-com_map,maps/mp/{MapName}.d3dbsp
-game_map_mp,maps/mp/{MapName}.d3dbsp
-gfx_map,maps/mp/{MapName}.d3dbsp
+col_map_mp,maps/{(isMultiplayer ? "mp/" : "")}{MapName}.d3dbsp
+fx_map,maps/{(isMultiplayer ? "mp/" : "")}{MapName}.d3dbsp
+com_map,maps/{(isMultiplayer ? "mp/" : "")}{MapName}.d3dbsp
+game_map_mp,maps/{(isMultiplayer ? "mp/" : "")}{MapName}.d3dbsp
+gfx_map,maps/{(isMultiplayer ? "mp/" : "")}{MapName}.d3dbsp
 
 material,compass_map_{MapName}
 

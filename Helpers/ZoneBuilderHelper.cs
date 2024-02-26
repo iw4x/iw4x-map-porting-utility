@@ -308,7 +308,7 @@
 
             if (exitCode == 0) {
 
-                string zbOutputPath = Path.Combine(paths.IW4Path, "zone", $"{mapName}");
+                string zbOutputPath = Path.Combine(paths.IW4Path, "zonebuilder_out", $"{mapName}");
                 string[] filesToMove = {
                     $"{zbOutputPath}.ff",
                     $"{zbOutputPath}_load.ff"
