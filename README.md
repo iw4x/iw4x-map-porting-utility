@@ -1,5 +1,5 @@
 # ![iw4-mpu](Resources/cardicon_porterjustice.png) IW4x Map Porting Utility
-IW4x MPU is a middleware to simplify porting maps from Call Of Duty 4 (referred to as IW3) to Call Of Duty: Modern Warfare 2 (referred to as IW4) and unify the export from [iw3xport](https://github.com/XLabsProject/iw3x-port) to [zonebuilder](https://github.com/XLabsProject/iw4x-client).
+IW4x MPU is a middleware to simplify porting maps from Call Of Duty 4 (referred to as IW3) to Call Of Duty: Modern Warfare 2 (referred to as IW4) and unify the export from [iw3xport](https://github.com/iw4x/iw3x-port) to [zonebuilder](https://github.com/iw4x/iw4x-client).
 
 ![image](https://user-images.githubusercontent.com/33836535/208086098-54f5a29b-8aeb-4b63-8186-a869abd0ff6c.png)
 
@@ -7,9 +7,9 @@ It should be simple to use and allow the average user to port maps from IW3 to I
 
 ## Requirements
 - Call Of Duty 4 (1.7) in any language
-- [Latest version of IW3x.dll + IW3xport.exe](https://github.com/XLabsProject/iw3x-port/releases/latest) dropped in the Call Of Duty 4 game folder
+- [Latest version of IW3x.dll + IW3xport.exe](https://github.com/iw4x/iw3x-port/releases/latest) dropped in the Call Of Duty 4 game folder
 - Call Of Duty: Modern Warfare 2 (Any version compatible with IW4x)
-- Latest version of IW4x as obtained through the [XLabs Launcher](https://github.com/XLabsProject/launcher)
+- Latest version of IW4x as obtained through the [IW4x releases](https://github.com/iw4x/iw4x-client/releases/latest)
 
 ## Usage
 While providing a lot of room for customization with a ton of checkboxes and a dropdown menu, it is important to note that **the default options should work best for most users**.
