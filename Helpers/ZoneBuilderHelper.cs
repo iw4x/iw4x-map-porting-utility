@@ -8,6 +8,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using static MapPortingUtility.ExportHelper;
 
     public static class ZoneBuilderHelper
     {
@@ -42,13 +43,20 @@
 
         public static void WriteArena(string mapName, ref Paths paths)
         {
-
             var arenaFilePath = GetArenaFilePath(mapName, ref paths);
             Directory.CreateDirectory(Path.GetDirectoryName(arenaFilePath));
 
-            string mapNameShort = mapName.Substring(3).ToUpper();
+            string sourcePath = System.IO.Path.Combine(GetDumpDestinationPath(mapName, ref paths), $"{mapName}.arena");
+            if (System.IO.File.Exists(sourcePath))
+            {
+                // An arena was already generated, let's copy it over
+                System.IO.File.Copy(sourcePath, arenaFilePath, overwrite: true);
+            }
+            else
+            {
+                string mapNameShort = mapName.Substring(3).ToUpper();
 
-            string arena = $@"
+                string arena = $@"
 {{
   map           ""{mapName}""
   longname      ""MPUI_{mapNameShort}""
@@ -63,7 +71,8 @@
 }}
 ";
 
-            File.WriteAllText(arenaFilePath, arena);
+                File.WriteAllText(arenaFilePath, arena);
+            }
         }
 
         public static string[] GetZoneSources(ref Paths paths)
@@ -208,10 +217,10 @@
                     for (int i = 0; i < arenaLines.Length; i++) {
                         string line = arenaLines[i].Trim();
                         if (line.StartsWith("allieschar")) {
-                            teams.Add(line.Substring("allieschar".Length).Trim(' ', '"'));
+                            teams.Add(line.Substring("allieschar".Length).Trim(' ', '\t', '"'));
                         }
                         else if (line.StartsWith("axischar")) {
-                            teams.Add(line.Substring("axischar".Length).Trim(' ', '"'));
+                            teams.Add(line.Substring("axischar".Length).Trim(' ', '\t', '"'));
                         }
                     }
 

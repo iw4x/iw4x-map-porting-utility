@@ -501,7 +501,7 @@
 
                             if (shouldWriteArena) {
                                 ZoneBuilderHelper.WriteArena(map.Name, ref paths);
-                                outputTextBox.Invoke(updateTextBox, this, $"Generated arenafile for {map.Name}");
+                                outputTextBox.Invoke(updateTextBox, this, $"Created arenafile for {map.Name}");
                             }
 
                             ZoneBuilderHelper.WriteAdditionalFilesForProject(ref project, replaceExistingGSC: shouldOverwriteGSC);
