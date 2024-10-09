@@ -27,11 +27,17 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
 
     - uses: nuget/setup-nuget@v1
       with:
         nuget-version: latest
         
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+      
     - name: Restore Packages
       run: nuget restore $env:Solution_Name
       
@@ -47,7 +53,7 @@ jobs:
         files: bin/$env:Configuration/
         dest: release.zip
 
-    - name: Push auutomatic release
+    - name: Push automatic release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: '${{ secrets.GITHUB_TOKEN }}'
