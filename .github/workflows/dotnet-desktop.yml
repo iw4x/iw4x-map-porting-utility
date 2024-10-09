@@ -36,7 +36,10 @@ jobs:
         nuget-version: latest
         
     - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
+      run: |
+        echo $GITHUB_WORKSPACE
+        echo ${{ github.workspace }}
+        cd $GITHUB_WORKSPACE
       
     - name: Restore Packages
       run: nuget restore $env:Solution_Name
