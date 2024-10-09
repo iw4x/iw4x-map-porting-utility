@@ -30,7 +30,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.GroupBox zonebuilderGroupBox;
             System.Windows.Forms.GroupBox outputBoxGroup;
-            System.Windows.Forms.Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buildTeamsCheckbox = new System.Windows.Forms.CheckBox();
             this.regenerateZoneSourceButton = new System.Windows.Forms.Button();
@@ -50,13 +49,9 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputTabs = new System.Windows.Forms.TabControl();
             this.iw3TabPage = new System.Windows.Forms.TabPage();
-            this.addCarePackageCheckbox = new System.Windows.Forms.CheckBox();
+            this.conversionSettingsButton = new System.Windows.Forms.Button();
             this.iw3RefreshButton = new System.Windows.Forms.Button();
-            this.smodelsFixComboBox = new System.Windows.Forms.ComboBox();
-            this.includeGenericSoundsCheckbox = new System.Windows.Forms.CheckBox();
             this.replaceExistingFilesCheckbox = new System.Windows.Forms.CheckBox();
-            this.correctSpecularsCheckbox = new System.Windows.Forms.CheckBox();
-            this.convertGscCheckbox = new System.Windows.Forms.CheckBox();
             this.generateArenaCheckbox = new System.Windows.Forms.CheckBox();
             this.generateSourceCheckbox = new System.Windows.Forms.CheckBox();
             this.iw3ExportButton = new System.Windows.Forms.Button();
@@ -70,7 +65,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             zonebuilderGroupBox = new System.Windows.Forms.GroupBox();
             outputBoxGroup = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
             zonebuilderGroupBox.SuspendLayout();
             outputBoxGroup.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -107,7 +101,7 @@
             this.buildTeamsCheckbox.AutoSize = true;
             this.buildTeamsCheckbox.Checked = true;
             this.buildTeamsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.buildTeamsCheckbox.Location = new System.Drawing.Point(203, 78);
+            this.buildTeamsCheckbox.Location = new System.Drawing.Point(203, 75);
             this.buildTeamsCheckbox.Name = "buildTeamsCheckbox";
             this.buildTeamsCheckbox.Size = new System.Drawing.Size(123, 17);
             this.buildTeamsCheckbox.TabIndex = 12;
@@ -243,15 +237,6 @@
             this.outputTextBox.TabIndex = 4;
             this.outputTextBox.Text = "Test text\r\nProgram terminated with output 0.";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(205, 227);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(134, 13);
-            label1.TabIndex = 25;
-            label1.Text = "Incompatible static models:";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -310,14 +295,9 @@
             // iw3TabPage
             // 
             this.iw3TabPage.BackColor = System.Drawing.Color.Transparent;
-            this.iw3TabPage.Controls.Add(this.addCarePackageCheckbox);
+            this.iw3TabPage.Controls.Add(this.conversionSettingsButton);
             this.iw3TabPage.Controls.Add(this.iw3RefreshButton);
-            this.iw3TabPage.Controls.Add(label1);
-            this.iw3TabPage.Controls.Add(this.smodelsFixComboBox);
-            this.iw3TabPage.Controls.Add(this.includeGenericSoundsCheckbox);
             this.iw3TabPage.Controls.Add(this.replaceExistingFilesCheckbox);
-            this.iw3TabPage.Controls.Add(this.correctSpecularsCheckbox);
-            this.iw3TabPage.Controls.Add(this.convertGscCheckbox);
             this.iw3TabPage.Controls.Add(this.generateArenaCheckbox);
             this.iw3TabPage.Controls.Add(this.generateSourceCheckbox);
             this.iw3TabPage.Controls.Add(this.iw3ExportButton);
@@ -331,17 +311,16 @@
             this.iw3TabPage.Text = "Call of Duty 4";
             this.iw3TabPage.UseVisualStyleBackColor = true;
             // 
-            // addCarePackageCheckbox
+            // conversionSettingsButton
             // 
-            this.addCarePackageCheckbox.AutoSize = true;
-            this.addCarePackageCheckbox.Checked = true;
-            this.addCarePackageCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.addCarePackageCheckbox.Location = new System.Drawing.Point(205, 154);
-            this.addCarePackageCheckbox.Name = "addCarePackageCheckbox";
-            this.addCarePackageCheckbox.Size = new System.Drawing.Size(119, 17);
-            this.addCarePackageCheckbox.TabIndex = 26;
-            this.addCarePackageCheckbox.Text = "Add care packages";
-            this.addCarePackageCheckbox.UseVisualStyleBackColor = true;
+            this.conversionSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.conversionSettingsButton.Location = new System.Drawing.Point(205, 241);
+            this.conversionSettingsButton.Name = "conversionSettingsButton";
+            this.conversionSettingsButton.Size = new System.Drawing.Size(148, 23);
+            this.conversionSettingsButton.TabIndex = 13;
+            this.conversionSettingsButton.Text = "⚙ Conversion settings...";
+            this.conversionSettingsButton.UseVisualStyleBackColor = true;
+            this.conversionSettingsButton.Click += new System.EventHandler(this.conversionSettingsButton_Click);
             // 
             // iw3RefreshButton
             // 
@@ -354,66 +333,17 @@
             this.iw3RefreshButton.UseVisualStyleBackColor = true;
             this.iw3RefreshButton.Click += new System.EventHandler(this.iw3RefreshButton_Click);
             // 
-            // smodelsFixComboBox
-            // 
-            this.smodelsFixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.smodelsFixComboBox.FormattingEnabled = true;
-            this.smodelsFixComboBox.Items.AddRange(new object[] {
-            "Leave as-is",
-            "Delete + move to entities",
-            "Swap + move to entities"});
-            this.smodelsFixComboBox.Location = new System.Drawing.Point(205, 243);
-            this.smodelsFixComboBox.Name = "smodelsFixComboBox";
-            this.smodelsFixComboBox.Size = new System.Drawing.Size(148, 21);
-            this.smodelsFixComboBox.TabIndex = 24;
-            // 
-            // includeGenericSoundsCheckbox
-            // 
-            this.includeGenericSoundsCheckbox.AutoSize = true;
-            this.includeGenericSoundsCheckbox.Checked = true;
-            this.includeGenericSoundsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.includeGenericSoundsCheckbox.Location = new System.Drawing.Point(205, 200);
-            this.includeGenericSoundsCheckbox.Name = "includeGenericSoundsCheckbox";
-            this.includeGenericSoundsCheckbox.Size = new System.Drawing.Size(136, 17);
-            this.includeGenericSoundsCheckbox.TabIndex = 23;
-            this.includeGenericSoundsCheckbox.Text = "Include generic sounds";
-            this.includeGenericSoundsCheckbox.UseVisualStyleBackColor = true;
-            // 
             // replaceExistingFilesCheckbox
             // 
             this.replaceExistingFilesCheckbox.AutoSize = true;
             this.replaceExistingFilesCheckbox.Checked = true;
             this.replaceExistingFilesCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.replaceExistingFilesCheckbox.Location = new System.Drawing.Point(205, 177);
+            this.replaceExistingFilesCheckbox.Location = new System.Drawing.Point(205, 108);
             this.replaceExistingFilesCheckbox.Name = "replaceExistingFilesCheckbox";
             this.replaceExistingFilesCheckbox.Size = new System.Drawing.Size(134, 17);
             this.replaceExistingFilesCheckbox.TabIndex = 22;
             this.replaceExistingFilesCheckbox.Text = "Replace existing GSCs";
             this.replaceExistingFilesCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // correctSpecularsCheckbox
-            // 
-            this.correctSpecularsCheckbox.AutoSize = true;
-            this.correctSpecularsCheckbox.Checked = true;
-            this.correctSpecularsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.correctSpecularsCheckbox.Location = new System.Drawing.Point(205, 131);
-            this.correctSpecularsCheckbox.Name = "correctSpecularsCheckbox";
-            this.correctSpecularsCheckbox.Size = new System.Drawing.Size(108, 17);
-            this.correctSpecularsCheckbox.TabIndex = 21;
-            this.correctSpecularsCheckbox.Text = "Correct speculars";
-            this.correctSpecularsCheckbox.UseVisualStyleBackColor = true;
-            // 
-            // convertGscCheckbox
-            // 
-            this.convertGscCheckbox.AutoSize = true;
-            this.convertGscCheckbox.Checked = true;
-            this.convertGscCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.convertGscCheckbox.Location = new System.Drawing.Point(205, 108);
-            this.convertGscCheckbox.Name = "convertGscCheckbox";
-            this.convertGscCheckbox.Size = new System.Drawing.Size(93, 17);
-            this.convertGscCheckbox.TabIndex = 20;
-            this.convertGscCheckbox.Text = "Convert GSCs";
-            this.convertGscCheckbox.UseVisualStyleBackColor = true;
             // 
             // generateArenaCheckbox
             // 
@@ -497,7 +427,7 @@
             this.iw5GenerateArena.AutoSize = true;
             this.iw5GenerateArena.Checked = true;
             this.iw5GenerateArena.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.iw5GenerateArena.Location = new System.Drawing.Point(205, 89);
+            this.iw5GenerateArena.Location = new System.Drawing.Point(205, 85);
             this.iw5GenerateArena.Name = "iw5GenerateArena";
             this.iw5GenerateArena.Size = new System.Drawing.Size(116, 17);
             this.iw5GenerateArena.TabIndex = 23;
@@ -509,7 +439,7 @@
             this.iw5OverwriteSource.AutoSize = true;
             this.iw5OverwriteSource.Checked = true;
             this.iw5OverwriteSource.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.iw5OverwriteSource.Location = new System.Drawing.Point(205, 66);
+            this.iw5OverwriteSource.Location = new System.Drawing.Point(205, 62);
             this.iw5OverwriteSource.Name = "iw5OverwriteSource";
             this.iw5OverwriteSource.Size = new System.Drawing.Size(132, 17);
             this.iw5OverwriteSource.TabIndex = 22;
@@ -598,11 +528,7 @@
         private System.Windows.Forms.Button editArenaFileButton;
         private System.Windows.Forms.TabControl inputTabs;
         private System.Windows.Forms.TabPage iw3TabPage;
-        private System.Windows.Forms.ComboBox smodelsFixComboBox;
-        private System.Windows.Forms.CheckBox includeGenericSoundsCheckbox;
         private System.Windows.Forms.CheckBox replaceExistingFilesCheckbox;
-        private System.Windows.Forms.CheckBox correctSpecularsCheckbox;
-        private System.Windows.Forms.CheckBox convertGscCheckbox;
         private System.Windows.Forms.CheckBox generateArenaCheckbox;
         private System.Windows.Forms.CheckBox generateSourceCheckbox;
         private System.Windows.Forms.Button iw3ExportButton;
@@ -615,7 +541,7 @@
         private System.Windows.Forms.Button iw3RefreshButton;
         private System.Windows.Forms.Button iw5RefreshButton;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.CheckBox addCarePackageCheckbox;
+        private System.Windows.Forms.Button conversionSettingsButton;
     }
 }
 

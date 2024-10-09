@@ -1,5 +1,6 @@
 ﻿namespace MapPortingUtility
 {
+    using MapPortingUtility.Forms;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -15,6 +16,8 @@
     {
         private Paths paths;
 
+        private readonly IW3Settings iw3SettingsForm;
+
         private readonly Action<MainForm, string> updateTextBox = (MainForm form, string txt) =>
         {
             form.outputTextBox.AppendText($"{txt}{Environment.NewLine}");
@@ -23,11 +26,13 @@
         public MainForm() : base()
         {
             InitializeComponent();
+
+            iw3SettingsForm = new IW3Settings();
+
             iw3MapListBox.ItemCheck += Iw3MapListBox_ItemCheck;
             iw5MapListBox.ItemCheck += Iw5MapListBox_ItemCheck;
             iw4ZoneListBox.ItemCheck += Iw4ZoneListBox_ItemCheck;
             outputTextBox.Text = string.Empty;
-            smodelsFixComboBox.SelectedIndex = 2;
 
             SetupTooltips();
 
@@ -350,7 +355,7 @@
             Enabled = false;
             outputTextBox.Clear();
 
-            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
+            bool includeGenericSounds = iw3SettingsForm.IncludeGenericSounds;
 
             Task.Run(() =>
             {
@@ -417,12 +422,7 @@
             new ToolTip().SetToolTip(iw5ExportButton, "Dump selected map(s) with the specified settings and put it in <iw4x game folder>/mods/<name of the map>");
             new ToolTip().SetToolTip(generateSourceCheckbox, "Generate a CSV to build this map again later and place it in <iw4x game folder>/zone_source");
             new ToolTip().SetToolTip(generateArenaCheckbox, "Generate an arena file with teams and gamemode information and place it in <iw4x game folder>/usermaps/<name of the map>");
-            new ToolTip().SetToolTip(convertGscCheckbox, "Attempt to automatically upgrade GSC from iw3 functions to iw4 equivalents and fix fog/specular calls");
-            new ToolTip().SetToolTip(correctSpecularsCheckbox, "Aggressively tone down the specular images to correspond to iw4's grading");
-            new ToolTip().SetToolTip(addCarePackageCheckbox, "Modifies the clipmap to add two care packages as required by iw4. Should be harmless.");
             new ToolTip().SetToolTip(replaceExistingFilesCheckbox, "Replace existing GSC files that might already be in <iw4x game folder>/mods/<name of the map>");
-            new ToolTip().SetToolTip(includeGenericSoundsCheckbox, "Add a bunch of generic sounds to the zone - this increases the size of the map but ensures most sounds will be present");
-            new ToolTip().SetToolTip(smodelsFixComboBox, "Some iw3 models cannot be used as static models on iw4. IW3xport will attempt to move them to entities instead, unless you pick \"Leave as is\". Models can be either removed from GfxWorld (best, but can sometimes cause visibility issues) or swapped around GfxWorld (worse, but safer)");
 
             new ToolTip().SetToolTip(buildTeamsCheckbox, "Include the teams mentioned in the arenafile directly in the zone instead of loading them externally (better)");
             new ToolTip().SetToolTip(buildZoneButton, "Build selected map(s) from the zone source and copy them to <iw4x game folder>/usermaps/<name of the map> once built");
@@ -443,12 +443,8 @@
 
             bool shouldWriteSource = generateSourceCheckbox.Checked;
             bool shouldWriteArena = generateArenaCheckbox.Checked;
-            bool shouldConvertGSC = convertGscCheckbox.Checked;
-            bool shouldCorrectSpeculars = correctSpecularsCheckbox.Checked;
             bool shouldOverwriteGSC = replaceExistingFilesCheckbox.Checked;
-            bool includeGenericSounds = includeGenericSoundsCheckbox.Checked;
-            uint correctSModelsMethod = (uint)smodelsFixComboBox.SelectedIndex;
-            bool shouldAddCarePackages = addCarePackageCheckbox.Checked;
+            bool includeGenericSounds = iw3SettingsForm.IncludeGenericSounds;
 
             List<ExportHelper.Map> mapsToDump = new List<ExportHelper.Map>();
             Dictionary<ExportHelper.Map, int> indices = new Dictionary<ExportHelper.Map, int>();
@@ -478,10 +474,7 @@
                         int exitCode = IW3xportHelper.DumpMap(
                             map,
                             ref paths,
-                            shouldCorrectSpeculars,
-                            shouldConvertGSC,
-                            shouldAddCarePackages,
-                            correctSModelsMethod,
+                            iw3SettingsForm,
                             (txt) => outputTextBox.Invoke(updateTextBox, this, txt));
 
                         outputTextBox.Invoke(updateTextBox, this, $"IW3xport program terminated with output {exitCode}");
@@ -666,6 +659,11 @@
 
                 Invoke(postExport);
             });
+        }
+
+        private void conversionSettingsButton_Click(object sender, EventArgs e)
+        {
+            iw3SettingsForm.ShowDialog(this);
         }
     }
 }

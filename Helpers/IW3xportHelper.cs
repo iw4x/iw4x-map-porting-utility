@@ -8,6 +8,7 @@
     using System.IO;
     using System.Windows.Forms;
     using System.Diagnostics;
+    using MapPortingUtility.Forms;
 
     public class IW3xportHelper : ExportHelper
     {
@@ -78,7 +79,7 @@
             return maps.ToArray();
         }
 
-        public static int DumpMap(Map map, ref Paths paths, bool correctSpeculars, bool convertGSCs, bool addCarePackages, uint correctSmodelsMethod, Action<string> pipe)
+        public static int DumpMap(Map map, ref Paths paths, IW3Settings settings, Action<string> pipe)
         {
             string exePath = Path.Combine(paths.IW3Path, EXECUTABLE_NAME);
 
@@ -87,11 +88,22 @@
                 return -1;
             }
 
+            (string cmdName, Func<int> getter)[] arguments = new (string cmdName, Func<int> getter)[]
+            {
+                ("iw3x_correct_speculars", ()=> settings.ShouldConvertSpeculars ? 1 : 0),
+                ("iw3x_convert_gsc", ()=> settings.ShouldConvertGSCs ? 1 : 0),
+                ("iw3x_smodels_fix_method", ()=> settings.SModelsFixMethod),
+                ("iw3x_add_care_packages", ()=> settings.ShouldAddCarePackages ? 1 : 0),
+                ("iw3x_raise_ceiling", ()=> settings.ShouldRaiseCeiling ? 1 : 0),
+                ("iw3x_replace_turrets_with_miniguns", ()=> settings.ShouldReplaceWithMiniguns ? 1 : 0),
+                ("iw3x_extend_culling", ()=> settings.ShouldExtendCulling ? 1 : 0),
+            };
+
             var proc = new Process {
                 StartInfo = new ProcessStartInfo {
                     FileName = exePath,
                     WorkingDirectory = paths.IW3Path,
-                    Arguments = $"-stdout +set iw3x_correct_speculars {(correctSpeculars ? 1 : 0)} +set iw3x_convert_gsc {(convertGSCs ? 1 : 0)} +set iw3x_smodels_fix_method {correctSmodelsMethod} +set iw3x_add_care_packages {(addCarePackages ? 1 : 0)} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
+                    Arguments = $"-stdout {string.Join(" ", arguments.Select(o=> $"+set {o.cmdName} {o.getter()}"))} +set export_path {GetDumpDestinationPath(ref map, ref paths)} +dumpmap {map.Name} +quit",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,

@@ -79,6 +79,12 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IW3Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IW3Settings.Designer.cs">
+      <DependentUpon>IW3Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="Model\ZoneProject.cs" />
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IW3Settings.resx">
+      <DependentUpon>IW3Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
