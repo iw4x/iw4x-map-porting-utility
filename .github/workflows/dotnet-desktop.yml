@@ -28,12 +28,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Install the .NET  workload
-    - name: Install .NET
-      uses: actions/setup-dotnet@v4
+    - uses: nuget/setup-nuget@v1
       with:
-        dotnet-version: 4.x
-
+        nuget-version: latest
+        
+    - name: Restore Packages
+      run: nuget restore $env:Solution_Name
+      
     # Build
     - name: Build the application
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
