@@ -50,7 +50,7 @@ jobs:
     - name: Make release zip
       uses: vimtor/action-zip@v1.2
       with:
-        files: bin/$env:Configuration/
+        files: bin/$Configuration/
         dest: release.zip
 
     - name: Push automatic release
