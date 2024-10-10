@@ -4,12 +4,7 @@ on:
   push:
     tags:
       - "*"
-  workflow_dispatch: 
-    inputs:
-      automatic_release_tag:
-        description: 'release tag'
-        required: true
-
+  workflow_dispatch: null
 jobs:
 
   build:
@@ -63,5 +58,6 @@ jobs:
       with:
         repo_token: '${{ secrets.GITHUB_TOKEN }}'
         prerelease: false
+        automatic_release_tag: "latest"
         files: |
           release.zip
