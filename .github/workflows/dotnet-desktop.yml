@@ -4,7 +4,11 @@ on:
   push:
     tags:
       - "*"
-  workflow_dispatch: null
+  workflow_dispatch: 
+    inputs:
+      automatic_release_tag:
+        description: 'release tag'
+        required: true
 
 jobs:
 
@@ -51,7 +55,7 @@ jobs:
     - name: Make release zip
       uses: vimtor/action-zip@v1.2
       with:
-        files: bin/$Configuration/
+        files: "bin/${{ matrix.configuration }}/"
         dest: release.zip
 
     - name: Push automatic release
