@@ -54,7 +54,7 @@
                 System.IO.File.WriteAllText(PATHS_FILE_NAME, pathsStr);
             }
             catch (Exception e) {
-                MessageBox.Show($"An error occured while writing paths:\n{e}\n\nYou may have to configure your paths again next time you launch the program", "Error while writing paths", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while writing paths:\n{e}\n\nYou may have to configure your paths again next time you launch the program", "Error while writing paths", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
